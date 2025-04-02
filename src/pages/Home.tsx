@@ -97,43 +97,54 @@ const Home = () => {
         ref={sectionRef}
         className="font-NHD relative flex w-full overflow-hidden px-10 py-20"
       >
-        <div className="right flex w-full flex-col gap-4 p-10 text-black">
-          <h6>WHO WE ARE</h6>
-          <p className="mt-4 w-3/4 text-xl">
-            COAN West Africa Limited is a construction company offering
-            integrated solutions and related services. COAN is known for
-            executing complex engineering solution that require the highest
-            level of technical expertise be it Civil, Electrical and Mechanical
-            Engineering Services.
-          </p>
-          <p className="w-3/4 text-xl">
-            COAN West Africa Limited is a construction company offering
-            integrated solutions and related services. COAN is known for
-            executing complex engineering solution that require the highest
-            level of technical expertise be it Civil, Electrical and Mechanical
-            Engineering Services.
-          </p>
+        {/* Right Section (Image) */}
+        <div className="right relative flex h-[500px] w-full items-center justify-center px-10">
+          <img
+            src="/map.webp"
+            alt="map"
+            className="max-h-full object-contain"
+          />
         </div>
-        <div className="left relative h-[500px] w-full border-l border-black/10 px-10">
+
+        {/* Middle Divider (Thin Line) */}
+        <div className="relative w-[2px] bg-black/10">
+          {/* SVG Line (Perfectly Centered on Divider) */}
           <svg
-            className="scrolling-border absolute top-0 left-0 text-orange-400"
-            width="4"
-            height="100%"
+            className="scrolling-border absolute top-0 left-0 h-full w-full text-orange-400"
             xmlns="http://www.w3.org/2000/svg"
           >
             <line
               ref={svgLineRef}
-              x1="0"
+              x1="50%"
               y1="0"
-              x2="0"
+              x2="50%"
               y2="100%"
               stroke="currentColor"
               strokeWidth="2"
             />
           </svg>
-          <img src="/map.webp" alt="map" />
+        </div>
+
+        {/* Left Section (Text) */}
+        <div className="left flex w-full flex-col gap-4 p-10 text-black">
+          <h6>WHO WE ARE</h6>
+          <p className="mt-4 w-3/4 text-xl">
+            COAN West Africa Limited is a construction company offering
+            integrated solutions and related services. COAN is known for
+            executing complex engineering solutions that require the highest
+            level of technical expertise, be it Civil, Electrical, and
+            Mechanical Engineering Services.
+          </p>
+          <p className="w-3/4 text-xl">
+            COAN West Africa Limited is a construction company offering
+            integrated solutions and related services. COAN is known for
+            executing complex engineering solutions that require the highest
+            level of technical expertise, be it Civil, Electrical, and
+            Mechanical Engineering Services.
+          </p>
         </div>
       </section>
+
       <section className="num-container font-NHD flex w-full items-center justify-center px-10 py-20">
         <div className="flex w-full gap-10">
           {/* Card 1 */}
@@ -142,8 +153,8 @@ const Home = () => {
               <span className="counter1">0</span>
               <span className="ml-1">%</span>
             </h3>{" "}
-            <p className="mt-2"> Metals recovery </p>
-            <p className="mt-2 w-1/2 text-base/5 text-black">
+            <p className="mt-4 opacity-40"> Metals recovery </p>
+            <p className="mt-0 w-1/2 text-base/5 text-black">
               On average, we recover 95% of key battery elements and supply raw
               materials back to U.S. battery manufacturers.
             </p>
@@ -206,47 +217,53 @@ const Home = () => {
           </p>
         </div>
       </section>
-      {/* <section
-        ref={sectionRef}
-        className="font-NHD relative flex w-full overflow-hidden px-10 py-20"
-      >
+      <section className="font-NHD relative flex w-full overflow-hidden px-10 py-20">
+        {/* Left Section */}
+        <div className="left relative flex h-[500px] w-full items-center justify-center px-10">
+          <img
+            src="/map.webp"
+            alt="map"
+            className="max-h-full object-contain"
+          />
+        </div>
+
+        {/* Middle Divider (Thin Line) */}
+        <div className="relative w-[2px] bg-black/10">
+          {/* SVG Line (Perfectly Centered on Divider) */}
+          <svg
+            className="absolute top-0 left-0 h-full w-full"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <line
+              x1="50%"
+              y1="0"
+              x2="50%"
+              y2="100%"
+              stroke="orange"
+              strokeWidth="2"
+            />
+          </svg>
+        </div>
+
+        {/* Right Section */}
         <div className="right flex w-full flex-col gap-4 p-10 text-black">
           <h6>WHO WE ARE</h6>
           <p className="mt-4 w-3/4 text-xl">
             COAN West Africa Limited is a construction company offering
             integrated solutions and related services. COAN is known for
-            executing complex engineering solution that require the highest
-            level of technical expertise be it Civil, Electrical and Mechanical
-            Engineering Services.
+            executing complex engineering solutions that require the highest
+            level of technical expertise, be it Civil, Electrical, and
+            Mechanical Engineering Services.
           </p>
           <p className="w-3/4 text-xl">
             COAN West Africa Limited is a construction company offering
             integrated solutions and related services. COAN is known for
-            executing complex engineering solution that require the highest
-            level of technical expertise be it Civil, Electrical and Mechanical
-            Engineering Services.
+            executing complex engineering solutions that require the highest
+            level of technical expertise, be it Civil, Electrical, and
+            Mechanical Engineering Services.
           </p>
         </div>
-        <div className="left relative h-[500px] w-full border-l border-black/10 px-10">
-          <svg
-            className="absolute top-0 left-0 text-orange-400"
-            width="4"
-            height="100%"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <line
-              ref={svgLineRef}
-              x1="0"
-              y1="0"
-              x2="0"
-              y2="100%"
-              stroke="currentColor"
-              strokeWidth="2"
-            />
-          </svg>
-          <img src="/map.webp" alt="map" />
-        </div>
-      </section> */}
+      </section>
     </>
   );
 };
