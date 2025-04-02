@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: NeueHaasDisplay-Roman;
+  src: url("../src/assets/fonts/NeueHaasDisplay-Roman.ttf") format("opentype");
+}
+@font-face {
+  font-family: DepartureMono;
+  src: url("../src/assets/fonts/DepartureMono-Regular.woff") format("woff");
+}
+@theme {
+  --font-NHD: NeueHaasDisplay-Roman, "sans-serif";
+  --font-Mono: DepartureMono, "sans-serif";
+}
+
+/* p {
+  font-family: var(--font-NHD);
+  font-size: 20px;
+  line-height: 1.5;
+} */
+h6 {
+  font-family: var(--font-NHD);
+  font-size: 12px;
+  line-height: 1.5;
+  font-weight: lighter;
+}
+h2 {
+  font-family: var(--font-NHD);
+  font-size: 3vw;
+  line-height: 1.2;
+  font-weight: lighter;
+}
