@@ -97,15 +97,24 @@ const Home = () => {
         ref={sectionRef}
         className="font-NHD relative flex w-full overflow-hidden px-10 py-20"
       >
-        {/* Right Section (Image) */}
-        <div className="right relative flex h-[500px] w-full items-center justify-center px-10">
-          <img
-            src="/map.webp"
-            alt="map"
-            className="max-h-full object-contain"
-          />
+        {/* Left Section (Text) */}
+        <div className="left flex w-full flex-col gap-4 p-10 text-black">
+          <h6>WHO WE ARE</h6>
+          <p className="mt-4 w-3/4 text-xl">
+            COAN West Africa Limited is a construction company offering
+            integrated solutions and related services. COAN is known for
+            executing complex engineering solutions that require the highest
+            level of technical expertise, be it Civil, Electrical, and
+            Mechanical Engineering Services.
+          </p>
+          <p className="w-3/4 text-xl">
+            COAN West Africa Limited is a construction company offering
+            integrated solutions and related services. COAN is known for
+            executing complex engineering solutions that require the highest
+            level of technical expertise, be it Civil, Electrical, and
+            Mechanical Engineering Services.
+          </p>
         </div>
-
         {/* Middle Divider (Thin Line) */}
         <div className="relative w-[2px] bg-black/10">
           {/* SVG Line (Perfectly Centered on Divider) */}
@@ -124,24 +133,13 @@ const Home = () => {
             />
           </svg>
         </div>
-
-        {/* Left Section (Text) */}
-        <div className="left flex w-full flex-col gap-4 p-10 text-black">
-          <h6>WHO WE ARE</h6>
-          <p className="mt-4 w-3/4 text-xl">
-            COAN West Africa Limited is a construction company offering
-            integrated solutions and related services. COAN is known for
-            executing complex engineering solutions that require the highest
-            level of technical expertise, be it Civil, Electrical, and
-            Mechanical Engineering Services.
-          </p>
-          <p className="w-3/4 text-xl">
-            COAN West Africa Limited is a construction company offering
-            integrated solutions and related services. COAN is known for
-            executing complex engineering solutions that require the highest
-            level of technical expertise, be it Civil, Electrical, and
-            Mechanical Engineering Services.
-          </p>
+        {/* Right Section (Image) */}
+        <div className="right relative flex h-[500px] w-full items-center justify-center px-10">
+          <img
+            src="/map.webp"
+            alt="map"
+            className="max-h-full object-contain"
+          />
         </div>
       </section>
 
@@ -184,6 +182,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+
       <Ticker />
       <section className="flex h-screen w-full text-orange-400">
         <div className="flex w-1/2 items-center justify-center">
@@ -214,53 +213,6 @@ const Home = () => {
             repellendus a quaerat veniam culpa quod facere quasi mollitia
             distinctio quos delectus error, voluptatum eaque reprehenderit
             officia iusto at molestiae recusandae.
-          </p>
-        </div>
-      </section>
-      <section className="font-NHD relative flex w-full overflow-hidden px-10 py-20">
-        {/* Left Section */}
-        <div className="left relative flex h-[500px] w-full items-center justify-center px-10">
-          <img
-            src="/map.webp"
-            alt="map"
-            className="max-h-full object-contain"
-          />
-        </div>
-
-        {/* Middle Divider (Thin Line) */}
-        <div className="relative w-[2px] bg-black/10">
-          {/* SVG Line (Perfectly Centered on Divider) */}
-          <svg
-            className="absolute top-0 left-0 h-full w-full"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <line
-              x1="50%"
-              y1="0"
-              x2="50%"
-              y2="100%"
-              stroke="orange"
-              strokeWidth="2"
-            />
-          </svg>
-        </div>
-
-        {/* Right Section */}
-        <div className="right flex w-full flex-col gap-4 p-10 text-black">
-          <h6>WHO WE ARE</h6>
-          <p className="mt-4 w-3/4 text-xl">
-            COAN West Africa Limited is a construction company offering
-            integrated solutions and related services. COAN is known for
-            executing complex engineering solutions that require the highest
-            level of technical expertise, be it Civil, Electrical, and
-            Mechanical Engineering Services.
-          </p>
-          <p className="w-3/4 text-xl">
-            COAN West Africa Limited is a construction company offering
-            integrated solutions and related services. COAN is known for
-            executing complex engineering solutions that require the highest
-            level of technical expertise, be it Civil, Electrical, and
-            Mechanical Engineering Services.
           </p>
         </div>
       </section>
