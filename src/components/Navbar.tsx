@@ -37,7 +37,7 @@ const Navbar = () => {
           </Link>
 
           {/* Centered Desktop Links */}
-          <div className="flex flex-grow justify-center space-x-8 text-lg text-white md:flex">
+          <div className="absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 space-x-8 text-base text-white">
             <Link to="/" className="hover:text-orange-500">
               Home
             </Link>
@@ -53,11 +53,8 @@ const Navbar = () => {
           </div>
 
           {/* Contact Link (Right Aligned) */}
-          <div className="flex-shrink-0">
-            <Link
-              to="/contact"
-              className="text-lg text-white hover:text-orange-500"
-            >
+          <div className="flex-shrink-0 rounded-md bg-orange-500 px-6 py-2">
+            <Link to="/contact" className="text-base text-white">
               Contact
             </Link>
           </div>

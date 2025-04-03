@@ -2,7 +2,8 @@ import { useEffect, useRef } from "react";
 import Button from "../components/Buttons";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Ticker from "../components/Ticker";
+// import Ticker from "../components/Ticker";
+// import BentoGrid from "../components/Bento";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -75,20 +76,25 @@ const Home = () => {
               COAN West Africa Limited delivers top-tier construction <br />
               and engineering solutions.
             </p>
-            <Button className="mt-10" variant="outline">
+            {/* <Button className="mt-10" variant="outline">
               Read More
-            </Button>
+            </Button> */}
           </div>
         </div>
       </section>
+
+      {/*Bento Grid */}
+      {/* <div className="flex min-h-screen items-center justify-center bg-gray-100">
+        <BentoGrid />
+      </div> */}
 
       {/* 2nd Section */}
       <section className="relative flex w-full overflow-hidden px-10 py-24">
         <div className="mx-auto flex w-full max-w-3/4 flex-col items-center gap-4 text-center text-5xl text-black">
           <h2>
-            A construction <span className="text-orange-400">company,</span>{" "}
+            A construction <span className="text-orange-500">company,</span>{" "}
             <br /> offering integrated{" "}
-            <span className="text-orange-400">solution </span>
+            <span className="text-orange-500">solution </span>
             and related services.
           </h2>
         </div>
@@ -114,12 +120,15 @@ const Home = () => {
             level of technical expertise, be it Civil, Electrical, and
             Mechanical Engineering Services.
           </p>
+          <Button className="mt-10" variant="primary">
+            Read More
+          </Button>
         </div>
         {/* Middle Divider (Thin Line) */}
         <div className="relative w-[2px] bg-black/10">
           {/* SVG Line (Perfectly Centered on Divider) */}
           <svg
-            className="scrolling-border absolute top-0 left-0 h-full w-full text-orange-400"
+            className="scrolling-border absolute top-0 left-0 h-full w-full text-orange-500"
             xmlns="http://www.w3.org/2000/svg"
           >
             <line
@@ -129,7 +138,7 @@ const Home = () => {
               x2="50%"
               y2="100%"
               stroke="currentColor"
-              strokeWidth="2"
+              strokeWidth="3"
             />
           </svg>
         </div>
@@ -146,22 +155,22 @@ const Home = () => {
       <section className="num-container font-NHD flex w-full items-center justify-center px-10 py-20">
         <div className="flex w-full gap-10">
           {/* Card 1 */}
-          <div className="num flex-1 rounded-2xl border-1 border-black/10 p-6">
+          <div className="num flex-1 rounded-md border-1 border-black/10 p-6">
             <h3 className="text-6xl text-black tabular-nums">
               <span className="counter1">0</span>
               <span className="ml-1">%</span>
             </h3>{" "}
             <p className="mt-4 opacity-40"> Metals recovery </p>
-            <p className="mt-0 w-1/2 text-base/5 text-black">
+            <p className="mt-2 w-1/2 text-base/5 text-black">
               On average, we recover 95% of key battery elements and supply raw
               materials back to U.S. battery manufacturers.
             </p>
           </div>
 
           {/* Card 2 */}
-          <div className="num flex-1 rounded-2xl border-1 border-black/10 p-6">
+          <div className="num flex-1 rounded-md border-1 border-black/10 p-6">
             <h3 className="counter2 text-6xl text-black">0</h3>
-            <p className="mt-2"> Years of experience </p>
+            <p className="mt-4 opacity-40"> Years of experience </p>
             <p className="mt-2 w-1/2 text-base/5 text-black">
               On average, we recover 95% of key battery elements and supply raw
               materials back to U.S. battery manufacturers.
@@ -169,12 +178,12 @@ const Home = () => {
           </div>
 
           {/* Card 3 */}
-          <div className="num flex-1 rounded-2xl border-1 border-black/10 p-6">
+          <div className="num flex-1 rounded-md border-1 border-black/10 p-6">
             <h3 className="text-6xl text-black tabular-nums">
               <span className="counter3">0</span>
               <span className="ml-1">+</span>
             </h3>{" "}
-            <p className="mt-2"> Projects </p>
+            <p className="mt-4 opacity-40"> Projects </p>
             <p className="mt-2 w-1/2 text-base/5 text-black">
               On average, we recover 95% of key battery elements and supply raw
               materials back to U.S. battery manufacturers.
@@ -182,9 +191,59 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <section
+        // ref={sectionRef}
+        className="font-NHD relative flex w-full overflow-hidden px-10 py-20"
+      >
+        {/* Left Section (Image) */}
+        <div className="right relative flex h-[500px] w-full items-center justify-center px-10">
+          <img
+            src="/map.webp"
+            alt="map"
+            className="max-h-full object-contain"
+          />
+        </div>
 
-      <Ticker />
-      <section className="flex h-screen w-full text-orange-400">
+        {/* Middle Divider (Thin Line) */}
+        <div className="relative w-[2px] bg-black/10">
+          {/* SVG Line (Perfectly Centered on Divider) */}
+          <svg
+            className="scrolling-border absolute top-0 left-0 h-full w-full text-orange-500"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <line
+              // ref={svgLineRef}
+              x1="50%"
+              y1="0"
+              x2="50%"
+              y2="100%"
+              stroke="currentColor"
+              strokeWidth="3"
+            />
+          </svg>
+        </div>
+        {/* Right Section (Text) */}
+        <div className="left flex w-full flex-col gap-4 p-10 text-black">
+          <h6>WHO WE ARE</h6>
+          <p className="mt-4 w-3/4 text-xl">
+            COAN West Africa Limited is a construction company offering
+            integrated solutions and related services. COAN is known for
+            executing complex engineering solutions that require the highest
+            level of technical expertise, be it Civil, Electrical, and
+            Mechanical Engineering Services.
+          </p>
+          <p className="w-3/4 text-xl">
+            COAN West Africa Limited is a construction company offering
+            integrated solutions and related services. COAN is known for
+            executing complex engineering solutions that require the highest
+            level of technical expertise, be it Civil, Electrical, and
+            Mechanical Engineering Services.
+          </p>
+        </div>
+      </section>
+
+      {/* <Ticker /> */}
+      <section className="flex h-screen w-full text-orange-500">
         <div className="flex w-1/2 items-center justify-center">
           <img
             src="https://images.unsplash.com/photo-1517089596392-fb9a9033e05b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -200,12 +259,13 @@ const Home = () => {
           />
         </div>
       </section>
+
       <section className="relative flex w-full overflow-hidden px-10 py-24">
         <div className="mx-auto flex w-full max-w-3/4 flex-col items-center gap-4 text-center text-5xl text-black">
           <h2>
-            A construction <span className="text-orange-400">company,</span>{" "}
+            A construction <span className="text-orange-500">company,</span>{" "}
             <br /> offering integrated{" "}
-            <span className="text-orange-400">solution </span>
+            <span className="text-orange-500">solution </span>
             and related services.
           </h2>
           <p className="mt-2 w-1/2 text-base/5 text-black">
@@ -215,6 +275,138 @@ const Home = () => {
             officia iusto at molestiae recusandae.
           </p>
         </div>
+      </section>
+      {/* Cards */}
+      <section className="relative flex w-full overflow-hidden px-10 pt-24">
+        <div className="flex h-[700px] w-full gap-4">
+          <div className="font-NHD flex flex-1 flex-col justify-between rounded-md px-10 py-14">
+            <div className="">
+              <h6>WHO WE ARE</h6>
+
+              <h4 className="mt-2 text-lg text-orange-500">
+                Operation & Maintenance
+              </h4>
+              <p className="mt-8 text-lg text-gray-500">
+                We emphasize on a broad spectrum of services, competences,
+                processes and tools to assure the built environment will perform
+                the functions for which a facility was designed and constructed.
+              </p>
+            </div>
+          </div>
+          <div className="font-NHD flex flex-1 flex-col justify-between rounded-md border-1 border-black/10 px-10 py-14">
+            <div className="flex flex-col">
+              <img
+                src="your-image-url.jpg"
+                alt="Card Image"
+                className="h-40 w-full rounded-t-md object-cover"
+              />
+              <h3 className="mt-2 text-4xl">Card Title</h3>
+            </div>
+
+            <div className="">
+              <h4 className="text-lg text-orange-500">
+                Operation & Maintenance
+              </h4>
+              <p className="mt-8 text-lg text-gray-500">
+                We emphasize on a broad spectrum of services, competences,
+                processes and tools to assure the built environment will perform
+                the functions for which a facility was designed and constructed.
+              </p>
+            </div>
+          </div>
+          <div className="font-NHD flex flex-1 flex-col justify-between rounded-md border-1 border-black/10 px-10 py-14">
+            <div className="flex flex-col">
+              <img
+                src="/truck.png"
+                alt="Card Image"
+                className="h-60 w-full rounded-t-md object-cover"
+              />
+              <h3 className="mt-4 text-4xl">Card Title</h3>
+            </div>
+
+            <div className="">
+              <h4 className="text-lg text-orange-500">
+                Operation & Maintenance
+              </h4>
+              <p className="mt-8 text-lg text-gray-500">
+                We emphasize on a broad spectrum of services, competences,
+                processes and tools to assure the built environment will perform
+                the functions for which a facility was designed and constructed.
+              </p>
+            </div>
+          </div>{" "}
+        </div>
+      </section>
+      <section className="relative flex w-full overflow-hidden px-10 pt-4 pb-24">
+        <div className="flex h-[700px] w-full gap-4">
+          <div className="font-NHD flex flex-1 flex-col justify-between rounded-md border-1 border-black/10 px-10 py-14">
+            <div className="flex flex-col">
+              <img
+                src="your-image-url.jpg"
+                alt="Card Image"
+                className="h-40 w-full rounded-t-md object-cover"
+              />
+              <h3 className="mt-2 text-4xl">Card Title</h3>
+            </div>
+
+            <div className="">
+              <h4 className="text-lg text-orange-500">
+                Operation & Maintenance
+              </h4>
+              <p className="mt-8 text-lg text-gray-500">
+                We emphasize on a broad spectrum of services, competences,
+                processes and tools to assure the built environment will perform
+                the functions for which a facility was designed and constructed.
+              </p>
+            </div>
+          </div>
+          <div className="font-NHD flex flex-1 flex-col justify-between rounded-md border-1 border-black/10 px-10 py-14">
+            <div className="flex flex-col">
+              <img
+                src="your-image-url.jpg"
+                alt="Card Image"
+                className="h-40 w-full rounded-t-md object-cover"
+              />
+              <h3 className="mt-2 text-4xl">Card Title</h3>
+            </div>
+
+            <div className="">
+              <h4 className="text-lg text-orange-500">
+                Operation & Maintenance
+              </h4>
+              <p className="mt-8 text-lg text-gray-500">
+                We emphasize on a broad spectrum of services, competences,
+                processes and tools to assure the built environment will perform
+                the functions for which a facility was designed and constructed.
+              </p>
+            </div>
+          </div>
+          <div className="font-NHD invisible flex flex-1 flex-col justify-between rounded-md border-1 border-black/10 px-10 py-14">
+            <div className="flex flex-col">
+              <img
+                src="your-image-url.jpg"
+                alt="Card Image"
+                className="h-40 w-full rounded-t-md object-cover"
+              />
+              <h3 className="mt-2 text-4xl">Card Title</h3>
+            </div>
+
+            <div className="">
+              <h4 className="text-lg text-orange-500">
+                Operation & Maintenance
+              </h4>
+              <p className="mt-8 text-lg text-gray-500">
+                We emphasize on a broad spectrum of services, competences,
+                processes and tools to assure the built environment will perform
+                the functions for which a facility was designed and constructed.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="h-screen w-full">
+        <div className="relative flex h-full items-center justify-center bg-[url('https://images.unsplash.com/photo-1517089596392-fb9a9033e05b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center bg-no-repeat"></div>
       </section>
     </>
   );
