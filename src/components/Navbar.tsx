@@ -25,7 +25,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="sticky top-0 z-50 flex h-18 w-full items-center px-10">
+      <nav className="sticky top-0 z-9999 flex h-18 w-full items-center bg-white px-10">
         <div className="flex w-full items-center justify-between">
           {/* Logo (Left Aligned) */}
           <Link to="/" className="flex h-16 items-center">
@@ -37,7 +37,7 @@ const Navbar = () => {
           </Link>
 
           {/* Centered Desktop Links */}
-          <div className="absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 space-x-8 text-base text-white">
+          <div className="absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 space-x-8 text-base text-black">
             <Link to="/" className="hover:text-orange-500">
               Home
             </Link>

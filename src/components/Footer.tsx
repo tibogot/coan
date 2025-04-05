@@ -1,130 +1,70 @@
-import React from "react";
+import { LinkedinLogo, FacebookLogo, X } from "@phosphor-icons/react";
+import { Link } from "react-router-dom";
 
-const Footer: React.FC = () => {
+const Footer = () => {
   return (
-    <footer className="relative h-screen w-full overflow-hidden p-4">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="https://picsum.photos/1920/1080"
-          alt="Landscape background"
-          className="h-full w-full object-cover"
-        />
+    <footer className="relative flex min-h-[80vh] flex-col justify-between bg-[#161826] py-12 text-white">
+      <div className="container flex flex-col items-start justify-between px-10 md:flex-row">
+        {/* Left Section - Navigation */}
+        <div className="space-y-4 text-2xl">
+          <Link to="/" className="block hover:text-orange-500">
+            Home
+          </Link>
+          <Link to="/about" className="block hover:text-orange-500">
+            About
+          </Link>
+          <Link to="/services" className="block hover:text-orange-500">
+            Services
+          </Link>
+          <Link to="/gallery" className="block hover:text-orange-500">
+            Gallery
+          </Link>
+          <Link to="/contact" className="block hover:text-orange-500">
+            Contact
+          </Link>
+        </div>
+
+        {/* Middle Section - Company Info */}
+        <div className="space-y-2 text-sm">
+          <h4 className="font-semibold">COAN West Africa</h4>
+          <p>COAN West Africa Limited</p>
+          <p>123 Business Avenue</p>
+          <p>Lagos, Nigeria</p>
+        </div>
+
+        {/* Right Section - Contact Info */}
+        <div className="space-y-2 text-sm">
+          <h4 className="font-semibold">Contact</h4>
+          <p>+234 123 456 789</p>
+          <p>info@coanwestafrica.com</p>
+
+          {/* Social Media Icons */}
+          <div className="mt-2 flex space-x-4">
+            <LinkedinLogo
+              size={24}
+              className="cursor-pointer hover:text-gray-400"
+            />
+            <X size={24} className="cursor-pointer hover:text-gray-400" />
+            <FacebookLogo
+              size={24}
+              className="cursor-pointer hover:text-gray-400"
+            />
+          </div>
+        </div>
       </div>
 
-      {/* Content Container */}
-      <div className="relative z-10 flex h-full flex-col gap-4 md:flex-row">
-        {/* Left Side - Subscription */}
-        <div className="flex flex-col rounded-lg bg-blue-100/90 p-8 md:w-1/2">
-          <div className="max-w-md">
-            <h2 className="mb-2 text-xl font-medium">
-              Subscribe to follow along with our latest news & updates.
-            </h2>
-
-            <div className="mt-4 mb-6 flex">
-              <input
-                type="email"
-                placeholder="Email address*"
-                className="flex-grow rounded-l border border-gray-300 p-2 text-sm"
-              />
-              <button className="rounded-r bg-blue-500 px-4 py-2 text-sm text-white">
-                Subscribe
-              </button>
-            </div>
-
-            <p className="mb-6 text-xs text-gray-600">
-              By clicking submit, you consent to allow Lilac to store and
-              process the info submitted and you acknowledge the
-              <a
-                href="/privacy-policy"
-                className="text-blue-700 hover:underline"
-              >
-                {" "}
-                Privacy Policy
-              </a>
-              .
-            </p>
-          </div>
-
-          <div className="mt-auto">
-            <div className="mb-8 grid grid-cols-2 gap-4">
-              <div>
-                <h3 className="mb-2 font-medium">About</h3>
-                <p className="mb-2">News</p>
-              </div>
-              <div>
-                <h3 className="mb-2 font-medium">LinkedIn</h3>
-                <p className="mb-2">Careers</p>
-              </div>
-              <div>
-                <h3 className="mb-2 font-medium">Press Inquiries</h3>
-                <p className="mb-2">Supplier Guide</p>
-              </div>
-            </div>
-
-            <div className="flex items-center justify-between border-t border-gray-300 pt-4">
-              <p className="text-xs text-gray-600">© Lilac Solutions 2025</p>
-              <div className="flex space-x-4">
-                <a href="/privacy-policy" className="text-xs text-gray-600">
-                  Privacy Policy
-                </a>
-                <a href="/cookie-consent" className="text-xs text-gray-600">
-                  Cookie Consent
-                </a>
-              </div>
-            </div>
-
-            <div className="mt-4">
-              <img src="/lilac-logo.svg" alt="Lilac Logo" className="h-8" />
-            </div>
-          </div>
+      {/* Bottom Section - Always at bottom */}
+      <div className="mt-auto border-t border-gray-700 pt-6 text-center text-sm text-gray-400">
+        <div className="flex flex-wrap justify-center gap-6">
+          <p className="cursor-pointer hover:text-white">Terms & Conditions</p>
+          <p className="cursor-pointer hover:text-white">Privacy Policy</p>
+          <p className="cursor-pointer hover:text-white">Legal Notice</p>
         </div>
-
-        {/* Right Side - Contact Form */}
-        <div className="flex flex-col justify-center rounded-lg bg-gray-100/80 p-8 md:w-1/2">
-          <div className="mx-auto max-w-md">
-            <h2 className="mb-6 text-xl font-medium">Contact us</h2>
-
-            <form className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <input
-                  type="text"
-                  placeholder="First name*"
-                  className="w-full rounded border border-gray-300 p-2"
-                />
-                <input
-                  type="text"
-                  placeholder="Last name*"
-                  className="w-full rounded border border-gray-300 p-2"
-                />
-              </div>
-
-              <input
-                type="email"
-                placeholder="E-mail address*"
-                className="w-full rounded border border-gray-300 p-2"
-              />
-
-              <textarea
-                placeholder="Message*"
-                rows={4}
-                className="w-full rounded border border-gray-300 p-2"
-              ></textarea>
-
-              <p className="text-xs text-gray-600">
-                By clicking submit, you consent to allow Lilac to store and
-                process the info submitted and you acknowledge the consent
-                requested.
-              </p>
-
-              <div>
-                <button className="rounded bg-gray-200 px-6 py-2 text-sm hover:bg-gray-300">
-                  Submit
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
+        <p className="mt-4">
+          &copy; {new Date().getFullYear()} COAN West Africa Limited. All Rights
+          Reserved
+        </p>
+        <p className="mt-2 cursor-pointer hover:text-white">Back to Top</p>
       </div>
     </footer>
   );

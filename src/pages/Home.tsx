@@ -4,12 +4,15 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 // import Ticker from "../components/Ticker";
 // import BentoGrid from "../components/Bento";
-
+import ProfilesTicker from "../components/ProfilesTicker";
+// import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
   const svgLineRef = useRef(null);
   const sectionRef = useRef(null);
+  const sectionRef1 = useRef(null);
+  const svgLineRef1 = useRef(null);
 
   useEffect(() => {
     // Make sure the DOM elements are available
@@ -48,6 +51,39 @@ const Home = () => {
           trigger: sectionRef.current,
           start: "top 70%", // Animation starts when the top of the section is 70% from the top of viewport
           end: "bottom 50%", // Animation ends when the bottom of the section is 20% from the top of viewport
+          scrub: true, // Smooth scrubbing effect tied to scroll position
+          // markers: true, // Uncomment for debugging
+        },
+      },
+    );
+    gsap.fromTo(
+      svgLineRef1.current,
+      {
+        scaleY: 0,
+        transformOrigin: "top center",
+      },
+      {
+        scaleY: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef1.current,
+          start: "top 70%", // Animation starts when the top of the section is 70% from the top of viewport
+          end: "bottom 50%", // Animation ends when the bottom of the section is 20% from the top of viewport
+          scrub: true, // Smooth scrubbing effect tied to scroll position
+          // markers: true, // Uncomment for debugging
+        },
+      },
+    );
+    gsap.to(
+      ".bigimg1",
+
+      {
+        scale: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".bigimg1",
+          start: "top 90%", // Animation starts when the top of the section is 70% from the top of viewport
+          end: "bottom 90%", // Animation ends when the bottom of the section is 20% from the top of viewport
           scrub: true, // Smooth scrubbing effect tied to scroll position
           // markers: true, // Uncomment for debugging
         },
@@ -192,7 +228,7 @@ const Home = () => {
         </div>
       </section>
       <section
-        // ref={sectionRef}
+        ref={sectionRef1}
         className="font-NHD relative flex w-full overflow-hidden px-10 py-20"
       >
         {/* Left Section (Image) */}
@@ -212,7 +248,7 @@ const Home = () => {
             xmlns="http://www.w3.org/2000/svg"
           >
             <line
-              // ref={svgLineRef}
+              ref={svgLineRef1}
               x1="50%"
               y1="0"
               x2="50%"
@@ -243,20 +279,30 @@ const Home = () => {
       </section>
 
       {/* <Ticker /> */}
-      <section className="flex h-screen w-full text-orange-500">
-        <div className="flex w-1/2 items-center justify-center">
-          <img
-            src="https://images.unsplash.com/photo-1517089596392-fb9a9033e05b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt=""
-            className="h-full w-full object-cover"
-          />
-        </div>
-        <div className="flex w-1/2 items-center justify-center">
+
+      {/* Big img 1 */}
+      <section className="bigimg1 relative flex h-screen w-full scale-75 text-orange-500">
+        {/* Background Image */}
+        <div className="absolute inset-0 bg-black/10"></div>
+
+        <div className="absolute inset-0 -z-1">
           <img
             src="https://images.unsplash.com/photo-1582540730843-f4418d96ccbe?q=80&w=2146&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt=""
             className="h-full w-full object-cover"
           />
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 flex w-full items-center justify-center px-10 py-24">
+          <div className="mx-auto flex w-full max-w-3/4 flex-col items-center gap-4 text-center text-5xl text-white">
+            <h2>
+              A construction <span className="text-orange-500">company,</span>
+              <br /> offering integrated{" "}
+              <span className="text-orange-500">solution</span> and related
+              services.
+            </h2>
+          </div>
         </div>
       </section>
 
@@ -277,8 +323,8 @@ const Home = () => {
         </div>
       </section>
       {/* Cards */}
-      <section className="relative flex w-full overflow-hidden px-10 pt-24">
-        <div className="flex h-[700px] w-full gap-4">
+      <section className="relative flex w-full overflow-hidden bg-white px-10 pt-24">
+        <div className="flex h-[500px] w-full gap-4">
           <div className="font-NHD flex flex-1 flex-col justify-between rounded-md px-10 py-14">
             <div className="">
               <h6>WHO WE ARE</h6>
@@ -338,7 +384,7 @@ const Home = () => {
         </div>
       </section>
       <section className="relative flex w-full overflow-hidden px-10 pt-4 pb-24">
-        <div className="flex h-[700px] w-full gap-4">
+        <div className="flex h-[500px] w-full gap-4">
           <div className="font-NHD flex flex-1 flex-col justify-between rounded-md border-1 border-black/10 px-10 py-14">
             <div className="flex flex-col">
               <img
@@ -381,7 +427,7 @@ const Home = () => {
               </p>
             </div>
           </div>
-          <div className="font-NHD invisible flex flex-1 flex-col justify-between rounded-md border-1 border-black/10 px-10 py-14">
+          <div className="font-NHD flex flex-1 flex-col justify-between rounded-md border-1 border-black/10 px-10 py-14">
             <div className="flex flex-col">
               <img
                 src="your-image-url.jpg"
@@ -404,10 +450,30 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      <section className="h-screen w-full">
-        <div className="relative flex h-full items-center justify-center bg-[url('https://images.unsplash.com/photo-1517089596392-fb9a9033e05b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center bg-no-repeat"></div>
+      <ProfilesTicker />
+      <section className="font-NHD relative -mt-18 h-[100svh] w-full overflow-hidden">
+        <div className="relative flex h-full items-center justify-center bg-[url('https://images.unsplash.com/photo-1517089596392-fb9a9033e05b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center bg-no-repeat">
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-black/10"></div>
+          {/* Text Container */}
+          <div className="absolute bottom-12 left-0 z-10 w-full px-10 text-white md:w-8/12">
+            <h1 className="text-7xl">
+              Building the Future with Precision & Expertise.
+            </h1>
+            {/* <p className="mt-4 w-1/2 text-lg">
+              COAN West Africa Limited delivers top-tier construction <br />
+              and engineering solutions.
+            </p> */}
+            {/* <Button className="mt-10" variant="outline">
+              Read More
+            </Button> */}
+          </div>
+        </div>
       </section>
+
+      {/* <section className="h-screen w-full">
+        <div className="relative flex h-full items-center justify-center bg-[url('https://images.unsplash.com/photo-1517089596392-fb9a9033e05b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center bg-no-repeat"></div>
+      </section> */}
     </>
   );
 };
