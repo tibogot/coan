@@ -152,19 +152,19 @@ const Home = () => {
             level of technical expertise, be it Civil, Electrical, and
             Mechanical Engineering Services.
           </p>
-          <p className="w-3/4 text-xl">
+          {/* <p className="w-3/4 text-xl">
             COAN West Africa Limited is a construction company offering
             integrated solutions and related services. COAN is known for
             executing complex engineering solutions that require the highest
             level of technical expertise, be it Civil, Electrical, and
             Mechanical Engineering Services.
-          </p>
+          </p> */}
           <Button className="mt-10" variant="primary">
             Read More
           </Button>
         </div>
         {/* Middle Divider (Thin Line) */}
-        <div className="relative w-[2px] bg-black/10">
+        <div className="relative w-[4px] bg-black/10">
           {/* SVG Line (Perfectly Centered on Divider) */}
           <svg
             className="scrolling-border absolute top-0 left-0 h-full w-full text-orange-500"
@@ -177,12 +177,12 @@ const Home = () => {
               x2="50%"
               y2="100%"
               stroke="currentColor"
-              strokeWidth="3"
+              strokeWidth="1"
             />
           </svg>
         </div>
         {/* Right Section (Image) */}
-        <div className="right relative flex h-[500px] w-full items-center justify-center px-10">
+        <div className="right relative flex h-[500px] w-full items-center justify-center p-10">
           {/* <img
             src="/map.svg"
             alt="map"
@@ -200,7 +200,7 @@ const Home = () => {
               <span className="counter1">0</span>
               <span className="ml-1">%</span>
             </h3>{" "}
-            <p className="mt-4 opacity-40"> Metals recovery </p>
+            <p className="mt-4 text-orange-500"> Metals recovery </p>
             <p className="mt-2 w-1/2 text-base/5 text-black">
               On average, we recover 95% of key battery elements and supply raw
               materials back to U.S. battery manufacturers.
@@ -210,7 +210,7 @@ const Home = () => {
           {/* Card 2 */}
           <div className="num flex-1 rounded-md border-1 border-black/10 p-6">
             <h3 className="counter2 text-6xl text-black">0</h3>
-            <p className="mt-4 opacity-40"> Years of experience </p>
+            <p className="mt-4 text-orange-500"> Years of experience </p>
             <p className="mt-2 w-1/2 text-base/5 text-black">
               On average, we recover 95% of key battery elements and supply raw
               materials back to U.S. battery manufacturers.
@@ -223,7 +223,7 @@ const Home = () => {
               <span className="counter3">0</span>
               <span className="ml-1">+</span>
             </h3>{" "}
-            <p className="mt-4 opacity-40"> Projects </p>
+            <p className="mt-4 text-orange-500"> Projects </p>
             <p className="mt-2 w-1/2 text-base/5 text-black">
               On average, we recover 95% of key battery elements and supply raw
               materials back to U.S. battery manufacturers.
@@ -231,6 +231,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+
       <section
         ref={sectionRef1}
         className="font-NHD relative flex w-full overflow-hidden px-10 py-20"
@@ -245,7 +246,7 @@ const Home = () => {
         </div>
 
         {/* Middle Divider (Thin Line) */}
-        <div className="relative w-[2px] bg-black/10">
+        <div className="relative w-[4px] bg-black/10">
           {/* SVG Line (Perfectly Centered on Divider) */}
           <svg
             className="scrolling-border absolute top-0 left-0 h-full w-full text-orange-500"
@@ -258,7 +259,7 @@ const Home = () => {
               x2="50%"
               y2="100%"
               stroke="currentColor"
-              strokeWidth="3"
+              strokeWidth="1"
             />
           </svg>
         </div>
