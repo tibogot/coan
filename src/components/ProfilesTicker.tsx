@@ -32,23 +32,26 @@ const PROFILES: ProfileType[] = [
   },
   {
     id: 3,
-    name: "Paul-Éric Perchaud",
-    title: "Managing Director",
-    image: "https://picsum.photos/200/300?random=3",
+    name: "Nonso Nwogwu",
+    title: "Director",
+    image:
+      "https://coanwaltd.com/wp-content/uploads/2022/04/pexels-dellon-thomas-1405963.jpg",
     countries: ["France"],
   },
   {
     id: 4,
-    name: "Jane Doe",
+    name: "Engr Ralf Jonas",
     title: "CTO",
-    image: "https://picsum.photos/200/300?random=4",
+    image:
+      "https://coanwaltd.com/wp-content/uploads/2022/04/pexels-dellon-thomas-2474307.jpg",
     countries: ["USA"],
   },
   {
     id: 5,
-    name: "John Smith",
-    title: "CFO",
-    image: "https://picsum.photos/200/300?random=5",
+    name: "Mr Ugwu Osita Sabastine",
+    title: "Accountant",
+    image:
+      "https://coanwaltd.com/wp-content/uploads/2018/12/Mr-Ugwu-Osita-Sabastine.jpg",
     countries: ["UK"],
   },
 ];

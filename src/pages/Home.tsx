@@ -5,6 +5,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 // import Ticker from "../components/Ticker";
 // import BentoGrid from "../components/Bento";
 import ProfilesTicker from "../components/ProfilesTicker";
+import FAQ from "../components/FAQ";
+import FlyingPaths from "../components/MapAnim2";
+// import Accordions from "../components/FAQ2";
 // import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 
@@ -180,11 +183,12 @@ const Home = () => {
         </div>
         {/* Right Section (Image) */}
         <div className="right relative flex h-[500px] w-full items-center justify-center px-10">
-          <img
-            src="/map.webp"
+          {/* <img
+            src="/map.svg"
             alt="map"
-            className="max-h-full object-contain"
-          />
+            className="fly-path h-full w-full object-contain"
+          /> */}
+          <FlyingPaths />
         </div>
       </section>
 
@@ -234,7 +238,7 @@ const Home = () => {
         {/* Left Section (Image) */}
         <div className="right relative flex h-[500px] w-full items-center justify-center px-10">
           <img
-            src="/map.webp"
+            src="/chart.png"
             alt="map"
             className="max-h-full object-contain"
           />
@@ -451,6 +455,7 @@ const Home = () => {
         </div>
       </section>
       <ProfilesTicker />
+
       <section className="font-NHD relative -mt-18 h-[100svh] w-full overflow-hidden">
         <div className="relative flex h-full items-center justify-center bg-[url('https://images.unsplash.com/photo-1517089596392-fb9a9033e05b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center bg-no-repeat">
           {/* Dark Overlay */}
@@ -470,6 +475,8 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <FAQ />
+      {/* <Accordions /> */}
 
       {/* <section className="h-screen w-full">
         <div className="relative flex h-full items-center justify-center bg-[url('https://images.unsplash.com/photo-1517089596392-fb9a9033e05b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center bg-no-repeat"></div>
