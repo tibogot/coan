@@ -454,9 +454,27 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <section className="font-NHD relative -mt-18 h-[100svh] w-full overflow-hidden bg-black"></section>
+
+      <section className="relative flex w-full overflow-hidden px-10 pt-24 pb-24">
+        <div className="flex w-full flex-col gap-4 text-black">
+          <h2>Discover our team</h2>
+          <p className="mt-24 w-1/2 text-base">
+            COAN's professional employees play an integral role in successfully
+            delivering some of the largest and most complex construction
+            engineering projects in Africa.
+          </p>
+        </div>
+        <div className="flex w-full flex-col items-end justify-end gap-4 text-black">
+          <Button className="mt-10" variant="primary">
+            Read More
+          </Button>
+        </div>
+      </section>
+
       <ProfilesTicker />
 
-      <section className="font-NHD relative -mt-18 h-[100svh] w-full overflow-hidden">
+      <section className="font-NHD relative h-[100svh] w-full overflow-hidden">
         <div className="relative flex h-full items-center justify-center bg-[url('https://images.unsplash.com/photo-1517089596392-fb9a9033e05b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center bg-no-repeat">
           {/* Dark Overlay */}
           <div className="absolute inset-0 bg-black/10"></div>
