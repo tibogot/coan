@@ -2,10 +2,8 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import Draggable from "gsap/Draggable";
 
-// Register plugins
 gsap.registerPlugin(Draggable);
 
-// Define TypeScript interfaces
 interface ProfileType {
   id: number;
   name: string;
@@ -64,45 +62,41 @@ const ProfilesTicker = () => {
   const isDragging = useRef<boolean>(false);
   const tickerWidthRef = useRef<number>(0);
 
-  // Create a function to create and start animation from a given position
   const startAnimationFromPosition = (
     element: HTMLDivElement,
     startX: number,
     width: number,
   ) => {
-    // Clear previous timeline if exists
     if (timelineRef.current) {
       timelineRef.current.kill();
     }
 
     // Normalize starting position
     let normalizedX = startX;
-    if (normalizedX <= -width) {
-      normalizedX = 0;
+    if (normalizedX >= 0) {
+      normalizedX = -width;
       gsap.set(element, { x: normalizedX });
-    } else if (normalizedX > 0) {
-      normalizedX = -width + 10;
+    } else if (normalizedX < -width) {
+      normalizedX = 0;
       gsap.set(element, { x: normalizedX });
     }
 
-    // Calculate remaining duration based on how far we've already gone
     const progress = Math.abs(normalizedX) / width;
     const remainingDuration = 30 * (1 - progress);
 
-    // Create new timeline
     timelineRef.current = gsap.timeline({ repeat: -1 });
 
-    // First move to the end of first set
+    // Move to the right edge
     timelineRef.current.to(element, {
-      x: -width,
+      x: 0,
       duration: remainingDuration,
       ease: "none",
     });
 
-    // Then loop back to the beginning and continue the full animation
-    timelineRef.current.set(element, { x: 0 });
+    // Reset to left again and loop
+    timelineRef.current.set(element, { x: -width });
     timelineRef.current.to(element, {
-      x: -width,
+      x: 0,
       duration: 30,
       ease: "none",
       repeat: -1,
@@ -115,7 +109,6 @@ const ProfilesTicker = () => {
     const tickerElement = tickerRef.current;
     if (!tickerElement) return;
 
-    // Calculate width of one set of profiles
     const profileElements = tickerElement.querySelectorAll(".profile-card");
     const firstSetProfiles = Array.from(profileElements).slice(
       0,
@@ -130,94 +123,72 @@ const ProfilesTicker = () => {
 
     tickerWidthRef.current = firstSetWidth;
 
-    // Set initial position
-    gsap.set(tickerElement, { x: 0 });
+    gsap.set(tickerElement, { x: -firstSetWidth });
 
-    // Start the initial animation
     timelineRef.current = startAnimationFromPosition(
       tickerElement,
-      0,
+      -firstSetWidth,
       firstSetWidth,
     );
 
-    // Create draggable with proper loop handling
     draggableRef.current = Draggable.create(tickerElement, {
       type: "x",
       inertia: true,
       edgeResistance: 0.65,
       onDragStart: () => {
         isDragging.current = true;
-        if (timelineRef.current) {
-          timelineRef.current.pause();
-        }
+        timelineRef.current?.pause();
       },
       onDrag: function () {
-        // Check if we need to loop while dragging
-        if (this.x <= -firstSetWidth) {
-          // Reset position to create loop effect
+        // Loop logic for rightward ticker
+        if (this.x > 0) {
+          gsap.set(tickerElement, { x: -firstSetWidth });
+          this.update();
+        } else if (this.x <= -firstSetWidth) {
           gsap.set(tickerElement, { x: 0 });
-          this.update(); // Update Draggable instance with new position
-        } else if (this.x > 0) {
-          // If dragged too far right, snap to end of first set
-          gsap.set(tickerElement, { x: -firstSetWidth + 10 });
-          this.update(); // Update Draggable instance with new position
+          this.update();
         }
       },
       onDragEnd: () => {
         isDragging.current = false;
-
-        if (!isHovering.current) {
-          // Get current position after potential looping
-          const currentX = gsap.getProperty(tickerElement, "x") as number;
-
-          // Start animation from current position
+        if (!isHovering.current && tickerRef.current) {
+          const currentX = gsap.getProperty(tickerRef.current, "x") as number;
           startAnimationFromPosition(
-            tickerElement,
-            currentX as number,
-            firstSetWidth,
+            tickerRef.current,
+            currentX,
+            tickerWidthRef.current,
           );
         }
       },
       onThrowUpdate: function () {
-        // Same loop checking logic during throw animation
-        if (this.x <= -firstSetWidth) {
-          gsap.set(tickerElement, { x: 0 });
+        if (this.x > 0) {
+          gsap.set(tickerRef.current, { x: -firstSetWidth });
           this.update();
-        } else if (this.x > 0) {
-          gsap.set(tickerElement, { x: -firstSetWidth + 10 });
+        } else if (this.x <= -firstSetWidth) {
+          gsap.set(tickerRef.current, { x: 0 });
           this.update();
         }
       },
     })[0];
 
     return () => {
-      if (timelineRef.current) {
-        timelineRef.current.kill();
-      }
-      if (draggableRef.current) {
-        draggableRef.current.kill();
-      }
+      timelineRef.current?.kill();
+      draggableRef.current?.kill();
     };
   }, []);
 
-  // Handle mouse interaction
   const handleMouseEnter = () => {
     isHovering.current = true;
-    if (timelineRef.current) {
-      timelineRef.current.pause();
-    }
+    timelineRef.current?.pause();
   };
 
   const handleMouseLeave = () => {
     isHovering.current = false;
     if (!isDragging.current && tickerRef.current) {
-      // Get current position
       const currentX = gsap.getProperty(tickerRef.current, "x") as number;
-
-      // Resume animation from current position
       startAnimationFromPosition(
         tickerRef.current,
-        currentX as number,
+        currentX,
         tickerWidthRef.current,
       );
     }
@@ -232,65 +203,26 @@ const ProfilesTicker = () => {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          {/* First set of profiles */}
-          {PROFILES.map((profile) => (
+          {[...PROFILES, ...PROFILES].map((profile, i) => (
             <div
-              key={`first-${profile.id}`}
+              key={`${i}-${profile.id}`}
               className="profile-card relative m-4 flex h-[650px] w-[450px] flex-col bg-white"
             >
-              {/* Country Tags */}
               <div className="absolute top-4 left-4 flex space-x-2">
-                {profile.countries.map((country, i) => (
+                {profile.countries.map((country, index) => (
                   <span
-                    key={i}
+                    key={index}
                     className="rounded-full bg-gray-200 px-3 py-1 text-xs font-semibold"
                   >
                     {country}
                   </span>
                 ))}
               </div>
-
-              {/* Profile Image */}
               <img
                 src={profile.image}
                 alt={profile.name}
                 className="h-[80%] w-full object-cover"
               />
-
-              {/* Name & Title */}
-              <div className="mt-2 px-4 pb-4">
-                <h3 className="text-xl font-medium">{profile.name}</h3>
-                <p className="mt-1 text-sm text-gray-500">{profile.title}</p>
-              </div>
-            </div>
-          ))}
-
-          {/* Duplicate set for seamless looping */}
-          {PROFILES.map((profile) => (
-            <div
-              key={`second-${profile.id}`}
-              className="profile-card relative m-4 flex h-[650px] w-[450px] flex-col bg-white"
-            >
-              {/* Country Tags */}
-              <div className="absolute top-4 left-4 flex space-x-2">
-                {profile.countries.map((country, i) => (
-                  <span
-                    key={i}
-                    className="rounded-full bg-gray-200 px-3 py-1 text-xs font-semibold"
-                  >
-                    {country}
-                  </span>
-                ))}
-              </div>
-
-              {/* Profile Image */}
-              <img
-                src={profile.image}
-                alt={profile.name}
-                className="h-[80%] w-full object-cover"
-              />
-
-              {/* Name & Title */}
               <div className="mt-2 px-4 pb-4">
                 <h3 className="text-xl font-medium">{profile.name}</h3>
                 <p className="mt-1 text-sm text-gray-500">{profile.title}</p>
