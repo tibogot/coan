@@ -254,6 +254,7 @@ const Home = () => {
 
       <section className="relative flex w-full overflow-hidden px-10 pt-24 pb-24">
         <div className="flex w-full flex-col gap-4 text-black">
+          <p className="text-lg text-orange-500">We're here to help.</p>
           <h2>Discover our team</h2>
           <p className="mt-24 w-1/2 text-base">
             COAN's professional employees play an integral role in successfully

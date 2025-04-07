@@ -25,7 +25,8 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="sticky top-0 z-[9999] flex h-18 w-full items-center bg-white/30 px-10 backdrop-blur-md">
+      {/* <nav className="sticky top-0 z-[9999] flex h-18 w-full items-center bg-white/30 px-10 backdrop-blur-md"> */}
+      <nav className="sticky top-0 z-[9999] flex h-18 w-full items-center px-10">
         <div className="flex w-full items-center justify-between">
           {/* Logo (Left Aligned) */}
           <Link to="/" className="flex h-16 items-center">

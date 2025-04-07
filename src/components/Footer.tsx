@@ -150,7 +150,7 @@ const Footer = () => {
         </div>
 
         {/* New Section with Images and Text Below (Inline with others) */}
-        <div className="flex flex-col items-start bg-amber-200 w-full md:w-2/4">
+        <div className="flex w-full flex-col items-start bg-amber-200 md:w-2/4">
           <div className="flex w-full">
             <img
               src="chart.png"

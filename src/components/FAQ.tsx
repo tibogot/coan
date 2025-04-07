@@ -94,54 +94,61 @@ const FAQ = () => {
   }, [activeId]);
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-16">
-      <h2 className="mb-12 text-center text-4xl font-bold text-black">
-        Frequently Asked Questions
-      </h2>
-      <div className="space-y-4">
-        {faqData.map((item, index) => (
-          <div
-            key={item.id}
-            className="overflow-hidden rounded-lg border border-gray-200 bg-white"
-          >
-            <button
-              className="flex w-full items-center justify-between px-6 py-4 text-left"
-              onClick={() => toggleAccordion(item.id)}
-              aria-expanded={activeId === item.id}
-              aria-controls={`content-${item.id}`}
-            >
-              <span className="text-lg font-medium text-gray-900">
-                {item.question}
-              </span>
-              <CaretDown
-                size={24}
-                className={`transform text-orange-500 transition-transform duration-300 ${
-                  activeId === item.id ? "rotate-180" : ""
-                }`}
-              />
-            </button>
+    <div className="mx-auto px-10 py-40">
+      <div className="flex flex-col items-start justify-between gap-12 md:flex-row">
+        {/* Left Section */}
+        <div className="md:w-1/2">
+          <p className="text-lg text-orange-500">We're here to help.</p>
+
+          <h2 className="mt-10 font-bold text-black">Got Questions?</h2>
+        </div>
+
+        {/* Right Section - FAQ */}
+        <div className="space-y-4 md:w-1/2">
+          {faqData.map((item, index) => (
             <div
-              ref={(el) => {
-                contentWrapperRefs.current[index] = el;
-              }}
-              id={`content-${item.id}`}
-              className="overflow-hidden"
-              style={{
-                height: 0,
-                visibility: "hidden",
-              }}
+              key={item.id}
+              className="overflow-hidden rounded-lg border border-gray-200 bg-white"
             >
+              <button
+                className="flex w-full items-center justify-between px-6 py-4 text-left"
+                onClick={() => toggleAccordion(item.id)}
+                aria-expanded={activeId === item.id}
+                aria-controls={`content-${item.id}`}
+              >
+                <span className="text-lg font-medium text-gray-900">
+                  {item.question}
+                </span>
+                <CaretDown
+                  size={24}
+                  className={`transform text-orange-500 transition-transform duration-300 ${
+                    activeId === item.id ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
               <div
                 ref={(el) => {
-                  contentRefs.current[index] = el;
+                  contentWrapperRefs.current[index] = el;
                 }}
-                className="px-6 pb-4"
+                id={`content-${item.id}`}
+                className="overflow-hidden"
+                style={{
+                  height: 0,
+                  visibility: "hidden",
+                }}
               >
-                <p className="text-gray-600">{item.answer}</p>
+                <div
+                  ref={(el) => {
+                    contentRefs.current[index] = el;
+                  }}
+                  className="px-6 pb-4"
+                >
+                  <p className="text-gray-600">{item.answer}</p>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

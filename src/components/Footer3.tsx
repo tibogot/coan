@@ -155,20 +155,22 @@ const Footer = () => {
             </div>
 
             {/* New Section with Images and Text Below (Inline with others) */}
-            <div className="flex w-full flex-col items-start bg-amber-200 md:w-2/4">
+            <div className="flex w-full flex-col items-start md:w-2/4">
               <div className="flex w-full">
                 <img
-                  src="chart.png"
+                  src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                   alt="Image 1"
-                  className="h-full w-1/2 object-cover"
+                  className="h-full w-1/2 rounded-sm object-cover pr-2"
                 />
                 <img
-                  src="bg-hero.jpg"
+                  src="https://plus.unsplash.com/premium_photo-1682617326998-776d7443f02c?q=80&w=1933&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                   alt="Image 2"
-                  className="h-full w-1/2 object-cover"
+                  className="h-full w-1/2 rounded-sm object-cover pl-2"
                 />
               </div>
-              <p className="text-center text-sm">Some text below the images</p>
+              <p className="mt-10 text-center text-sm text-orange-500">
+                Some text below the images
+              </p>
             </div>
           </div>
 
