@@ -254,11 +254,11 @@ const ProfilesTicker = () => {
               <img
                 src={profile.image}
                 alt={profile.name}
-                className="h-[80%] w-full object-cover"
+                className="h-[80%] w-full rounded-sm object-cover"
               />
 
               {/* Name & Title */}
-              <div className="mt-2 px-4 pb-4">
+              <div className="mt-2 pb-4">
                 <h3 className="text-xl font-medium">{profile.name}</h3>
                 <p className="mt-1 text-sm text-gray-500">{profile.title}</p>
               </div>
@@ -291,7 +291,7 @@ const ProfilesTicker = () => {
               />
 
               {/* Name & Title */}
-              <div className="mt-2 px-4 pb-4">
+              <div className="mt-2 pb-4">
                 <h3 className="text-xl font-medium">{profile.name}</h3>
                 <p className="mt-1 text-sm text-gray-500">{profile.title}</p>
               </div>
