@@ -55,7 +55,7 @@ const Home = () => {
         </div>
         {/* Hero Section */}
         <section className="relative -mt-18 h-[100svh] w-full overflow-hidden text-white">
-          <div className="bgimg2 relative flex h-full items-center bg-[url('./bgimg2.webp')] bg-cover bg-center bg-no-repeat">
+          <div className="bgimg2 relative flex h-full items-center bg-[url('/bgimg2.webp')] bg-cover bg-center bg-no-repeat">
             {/* Text Container */}
 
             <div className="flex flex-col px-10 select-none">
