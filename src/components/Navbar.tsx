@@ -26,38 +26,40 @@ const Navbar = () => {
   return (
     <>
       {/* <nav className="sticky top-0 z-[9999] flex h-18 w-full items-center bg-white/30 px-10 backdrop-blur-md"> */}
-      <nav className="sticky top-0 z-[9999] flex h-18 w-full items-center px-10">
+      <nav className="sticky top-0 z-[9999] flex h-18 w-full items-center px-10 select-none">
         <div className="flex w-full items-center justify-between">
           {/* Logo (Left Aligned) */}
           <Link to="/" className="flex h-16 items-center">
             <img
-              src="/Logo-Color.png"
+              src="/logo3.svg"
               alt="Company Logo"
               className="h-12 w-auto object-contain"
             />
           </Link>
 
-          {/* Centered Desktop Links */}
-          <div className="absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 space-x-8 text-base text-black">
-            <Link to="/" className="hover:text-orange-500">
-              Home
-            </Link>
-            <Link to="/about" className="hover:text-orange-500">
-              About
-            </Link>
-            <Link to="/services" className="hover:text-orange-500">
-              Services
-            </Link>
-            <Link to="/gallery" className="hover:text-orange-500">
-              Gallery
-            </Link>
-          </div>
+          <div className="flex items-center space-x-6">
+            {/* Navigation Links */}
+            <div className="flex space-x-6 text-base text-white">
+              <Link to="/" className="hover:text-orange-500">
+                Home
+              </Link>
+              <Link to="/about" className="hover:text-orange-500">
+                About
+              </Link>
+              <Link to="/services" className="hover:text-orange-500">
+                Services
+              </Link>
+              <Link to="/gallery" className="hover:text-orange-500">
+                Gallery
+              </Link>
+            </div>
 
-          {/* Contact Link (Right Aligned) */}
-          <div className="flex-shrink-0 rounded-md bg-orange-500 px-6 py-2">
-            <Link to="/contact" className="text-base text-white">
-              Contact
-            </Link>
+            {/* Contact Link (Visibly separated with extra space) */}
+            <div className="ml-4 flex-shrink-0 rounded-md bg-white/10 px-4 py-1.5">
+              <Link to="/contact" className="text-base text-white">
+                Contact
+              </Link>
+            </div>
           </div>
 
           {/* Burger Menu (Mobile) */}
