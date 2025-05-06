@@ -2,9 +2,8 @@ import { useEffect } from "react";
 import Button from "../components/Buttons";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import SecondSection from "../components/SecondSection";
 // import Ticker from "../components/Ticker";
-import BentoGrid from "../components/Bento";
+// import BentoGrid from "../components/Bento";
 import ProfilesTicker from "../components/ProfilesTicker";
 // import ProfilesTickerR from "../components/ProfilesTickerR";
 import FAQ from "../components/FAQ";
@@ -91,17 +90,17 @@ const Home = () => {
 
             <div className="w-1/2">
               <p className="w-7/8 text-xl">
-                MIMCO est un groupe d’investissement spécialisé dans
+                MIMCO est un groupe d'investissement spécialisé dans
                 l'immobilier value add paneuropéen.
                 <br />
-                Le groupe structure et gère des véhicules d’investissement
-                innovants au service d’une clientèle institutionnelle ainsi que
+                Le groupe structure et gère des véhicules d'investissement
+                innovants au service d'une clientèle institutionnelle ainsi que
                 de family offices et banques privées.
                 <br />
                 <br />
-                Fort d’une expertise pointue en structuration financière, MIMCO
+                Fort d'une expertise pointue en structuration financière, MIMCO
                 déploie une gamme complète de solutions — de la création de
-                fonds d’investissement réglementés aux club deals exclusifs, en
+                fonds d'investissement réglementés aux club deals exclusifs, en
                 passant par des produits sur mesure incluant notamment des
                 solutions equity et dette mezzanine.
               </p>

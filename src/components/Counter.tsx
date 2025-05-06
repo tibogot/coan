@@ -1,5 +1,3 @@
-import Button from "../components/Buttons";
-import FlyingPaths from "../components/MapAnim2";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef, useEffect } from "react";
@@ -7,9 +5,6 @@ import { useRef, useEffect } from "react";
 gsap.registerPlugin(ScrollTrigger);
 
 const Counter = () => {
-  const sectionRef = useRef<HTMLElement | null>(null);
-  const svgLineRef = useRef<SVGLineElement | null>(null);
-
   useEffect(() => {
     // Make sure the DOM elements are available
     // if (!sectionRef.current) return;
