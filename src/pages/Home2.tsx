@@ -65,7 +65,7 @@ const Home = () => {
               <div className="logobig w-200 pb-8">
                 <img src="./logo2.svg" alt="" />
               </div>
-                <p className="mx-2 text-xl">Construction Company West Africa</p>
+              <p className="mx-2 text-xl">Construction Company West Africa</p>
             </div>
           </div>
         </section>
@@ -75,7 +75,7 @@ const Home = () => {
         {/* <SecondSection /> */}
 
         <div className="section px-10 pt-10 pb-30">
-          <Copy delay={0.5}>
+          <Copy delay={0.0}>
             <h4>About us</h4>
           </Copy>
 
