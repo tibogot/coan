@@ -23,6 +23,7 @@ const Home = () => {
         delay: 1,
         y: "-100%",
         ease: "power4.inOut",
+        duration: "1",
       },
     ).to(".bgimg2", {
       scale: 1,
