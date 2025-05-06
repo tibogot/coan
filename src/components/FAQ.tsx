@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { CaretDown } from "@phosphor-icons/react";
 import { gsap } from "gsap";
+import Copy from "./Copy2";
 
 type FAQItem = {
   id: number;
@@ -98,9 +99,11 @@ const FAQ = () => {
       <div className="flex flex-col items-start justify-between gap-12 md:flex-row">
         {/* Left Section */}
         <div className="md:w-1/2">
-          <p className="text-lg text-orange-500">We're here to help.</p>
+          <Copy>
+            <p className="text-lg text-orange-500">We're here to help.</p>
 
-          <h2 className="mt-10 font-bold text-black">Got Questions?</h2>
+            <h2 className="mt-10 font-bold text-black">Got Questions?</h2>
+          </Copy>
         </div>
 
         {/* Right Section - FAQ */}

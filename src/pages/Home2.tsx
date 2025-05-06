@@ -22,6 +22,7 @@ const Home = () => {
       {
         delay: 1,
         y: "-100%",
+        ease: "power4.inOut",
       },
     ).to(".bgimg2", {
       scale: 1,
@@ -64,7 +65,7 @@ const Home = () => {
               <div className="logobig w-200 pb-8">
                 <img src="./logo2.svg" alt="" />
               </div>
-              <p className="mx-2 text-xl">Construction Company West Africa</p>
+                <p className="mx-2 text-xl">Construction Company West Africa</p>
             </div>
           </div>
         </section>
