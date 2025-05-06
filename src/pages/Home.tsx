@@ -4,7 +4,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SecondSection from "../components/SecondSection";
 // import Ticker from "../components/Ticker";
-import BentoGrid from "../components/Bento";
+// import BentoGrid from "../components/Bento";
 import ProfilesTicker from "../components/ProfilesTicker";
 // import ProfilesTickerR from "../components/ProfilesTickerR";
 import FAQ from "../components/FAQ";
