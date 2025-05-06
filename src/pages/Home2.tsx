@@ -90,9 +90,11 @@ const Home = () => {
           </Copy>
           <div className="mt-30 flex">
             <div className="w-1/2">
-              <h3 className="w-1/2 text-4xl">
-                Over 18 years grinding alongside founders with a chip
-              </h3>
+              <Copy>
+                <h3 className="w-1/2 text-4xl">
+                  Over 18 years grinding alongside founders with a chip
+                </h3>
+              </Copy>
             </div>
 
             <div className="w-1/2">
@@ -155,13 +157,15 @@ const Home = () => {
 
         <section className="relative flex w-full overflow-hidden px-10 pt-24 pb-24">
           <div className="flex w-full flex-col gap-4 text-black">
-            <p className="text-lg text-orange-500">We're here to help.</p>
-            <h2>Discover our team</h2>
-            <p className="mt-24 w-1/2 text-base">
-              COAN's professional employees play an integral role in
-              successfully delivering some of the largest and most complex
-              construction engineering projects in Africa.
-            </p>
+            <Copy>
+              <p className="text-lg text-orange-500">We're here to help.</p>
+              <h2>Discover our team</h2>
+              <p className="mt-24 w-1/2 text-base">
+                COAN's professional employees play an integral role in
+                successfully delivering some of the largest and most complex
+                construction engineering projects in Africa.
+              </p>
+            </Copy>
           </div>
           <div className="flex w-full flex-col items-end justify-end gap-4 text-black">
             <Button className="mt-10" variant="primary">
