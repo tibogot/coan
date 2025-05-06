@@ -8,7 +8,9 @@ import ProfilesTicker from "../components/ProfilesTicker";
 // import ProfilesTickerR from "../components/ProfilesTickerR";
 import FAQ from "../components/FAQ";
 import Counter from "../components/Counter";
+import Copy from "../components/Copy2";
 // import { useGSAP } from "@gsap/react";
+
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
@@ -72,15 +74,20 @@ const Home = () => {
         {/* <SecondSection /> */}
 
         <div className="section px-10 pt-10 pb-30">
-          <h4>About us</h4>
-          <h2 className="mt-4 w-3/4">
-            A construction <span className="text-orange-400">company,</span>
-            <br />
-            offering integrated solution and
-            <br />
-            related
-            <span className="text-orange-400"> services.</span>
-          </h2>
+          <Copy delay={0.5}>
+            <h4>About us</h4>
+          </Copy>
+
+          <Copy>
+            <h2 className="mt-4 w-3/4">
+              A construction <span className="text-orange-400">company,</span>
+              <br />
+              offering integrated solution and
+              <br />
+              related
+              <span className="text-orange-400"> services.</span>
+            </h2>
+          </Copy>
           <div className="mt-30 flex">
             <div className="w-1/2">
               <h3 className="w-1/2 text-4xl">
@@ -89,21 +96,23 @@ const Home = () => {
             </div>
 
             <div className="w-1/2">
-              <p className="w-7/8 text-xl">
-                MIMCO est un groupe d'investissement spécialisé dans
-                l'immobilier value add paneuropéen.
-                <br />
-                Le groupe structure et gère des véhicules d'investissement
-                innovants au service d'une clientèle institutionnelle ainsi que
-                de family offices et banques privées.
-                <br />
-                <br />
-                Fort d'une expertise pointue en structuration financière, MIMCO
-                déploie une gamme complète de solutions — de la création de
-                fonds d'investissement réglementés aux club deals exclusifs, en
-                passant par des produits sur mesure incluant notamment des
-                solutions equity et dette mezzanine.
-              </p>
+              <Copy>
+                <p className="w-7/8 text-xl">
+                  MIMCO est un groupe d'investissement spécialisé dans
+                  l'immobilier value add paneuropéen.
+                  <br />
+                  Le groupe structure et gère des véhicules d'investissement
+                  innovants au service d'une clientèle institutionnelle ainsi
+                  que de family offices et banques privées.
+                  <br />
+                  <br />
+                  Fort d'une expertise pointue en structuration financière,
+                  MIMCO déploie une gamme complète de solutions — de la création
+                  de fonds d'investissement réglementés aux club deals
+                  exclusifs, en passant par des produits sur mesure incluant
+                  notamment des solutions equity et dette mezzanine.
+                </p>
+              </Copy>
             </div>
           </div>
         </div>
