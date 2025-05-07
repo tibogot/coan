@@ -8,8 +8,9 @@ import ProfilesTicker from "../components/ProfilesTicker2";
 // import ProfilesTickerR from "../components/ProfilesTickerR";
 import FAQ from "../components/FAQ";
 import Counter from "../components/Counter";
-import Copy from "../components/Copy3";
+import Copy from "../components/Copy4";
 // import GridComponent from "../components/GridBalls";
+import GridComponent from "../components/GridComponent2";
 // import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -167,6 +168,57 @@ const Home = () => {
 
         {/* <section className="font-NHD relative h-[100svh] w-full overflow-hidden bg-black"></section> */}
 
+        <div className="flex w-full bg-black text-white">
+          <GridComponent />
+          <div className="flex w-1/2 flex-col items-start justify-center p-20">
+            <h2>
+              A construction <span className="text-orange-500">company,</span>
+              <br /> offering integrated{" "}
+              <span className="text-orange-500">solution</span> and related
+              services.
+            </h2>{" "}
+            <p className="mt-10 w-1/2 text-base">
+              COAN's professional employees play an integral role in
+              successfully delivering.
+            </p>
+          </div>
+        </div>
+        <section className="font-NHD relative flex h-[100svh] w-full overflow-hidden bg-black px-10 py-30 text-white">
+          <div className="left w-1/2">
+            <img
+              src="./bgimg2.webp"
+              alt=""
+              className="h-[650px] w-[550px] object-cover"
+            />
+          </div>
+          <div className="right w-1/2">
+            <Copy delay={0.0}>
+              <h4>About us</h4>
+            </Copy>
+
+            <Copy>
+              <h2 className="mt-4 w-3/4">
+                A construction company,
+                <br />
+                offering integrated solution and
+                <br />
+                related services.
+              </h2>
+            </Copy>
+            <Copy>
+              <p className="mt-10 w-7/8 text-xl">
+                MIMCO est un groupe d'investissement spécialisé dans
+                l'immobilier value add paneuropéen.
+                <br />
+                Le groupe structure et gère des véhicules d'investissement
+                innovants au service d'une clientèle institutionnelle ainsi que
+                de family offices et banques privées.
+                <br />
+              </p>
+            </Copy>
+          </div>
+        </section>
+
         <section className="relative flex w-full overflow-hidden px-10 pt-24 pb-24">
           <div className="flex w-full flex-col gap-4 text-black">
             <Copy>
@@ -185,11 +237,6 @@ const Home = () => {
             </Button>
           </div>
         </section>
-
-        {/* <div className="flex h-screen w-full bg-black text-white">
-          <GridComponent />
-          <h1>Coan Construction</h1>
-        </div> */}
 
         <ProfilesTicker />
 

@@ -1,6 +1,4 @@
 import { useEffect, useState, useRef } from "react";
-// import { gsap } from "gsap";
-import { useControls } from "leva";
 
 interface SymbolData {
   left: number;
@@ -18,44 +16,19 @@ const GridComponent: React.FC = () => {
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
   const [mounted, setMounted] = useState(false);
 
-  // More visible default values with all controls
-  const controls = useControls({
-    // Visual settings
-    bgColor: "transparent",
-    symbolColor: "#FF8000",
-
-    // Grid settings
-    gridSpacing: { value: 40, min: 30, max: 200, step: 1 },
-    symbolSize: { value: 5, min: 1, max: 200, step: 1 },
-    symbolCornerRadius: { value: 50, min: 0, max: 100, step: 1 },
-    symbolRotation: { value: 0, min: 0, max: 360, step: 1 },
-
-    // Interaction settings
-    mouseRadius: { value: 200, min: 1, max: 600, step: 10 },
-    scaleAmount: { value: 5, min: 1, max: 10, step: 0.1 },
-    animationSpeed: { value: 300, min: 100, max: 1000, step: 50 },
-
-    // Filter settings
-    filterBlur: { value: 0, min: 0, max: 20, step: 0.5 },
-    filterContrast: { value: 1, min: 1, max: 20, step: 0.5 },
-    isFilterEnabled: false,
-  });
-
-  // Destructure for easier use
-  const {
-    bgColor,
-    symbolColor,
-    gridSpacing,
-    symbolSize,
-    symbolCornerRadius,
-    symbolRotation,
-    mouseRadius,
-    scaleAmount,
-    animationSpeed,
-    filterBlur,
-    filterContrast,
-    isFilterEnabled,
-  } = controls;
+  // Fixed values (from your latest leva setup)
+  const bgColor = "transparent";
+  const symbolColor = "#FF8000";
+  const gridSpacing = 40;
+  const symbolSize = 5;
+  const symbolCornerRadius = 50;
+  const symbolRotation = 0;
+  const mouseRadius = 200;
+  const scaleAmount = 5;
+  const animationSpeed = 300;
+  const filterBlur = 0;
+  const filterContrast = 1;
+  const isFilterEnabled = false;
 
   const dist = (point1: [number, number], point2: [number, number]): number => {
     const [x1, y1] = point1;
@@ -75,31 +48,19 @@ const GridComponent: React.FC = () => {
   };
 
   const setGrid = (): void => {
-    console.log("Setting up grid");
     const grid = gridRef.current;
     if (!grid) return;
-
-    // Log dimensions to debug
-    console.log("Grid dimensions:", {
-      width: grid.clientWidth,
-      height: grid.clientHeight,
-    });
 
     const docWidth = grid.clientWidth;
     const docHeight = grid.clientHeight;
 
-    // Calculate number of grid points based on spacing
     const gridWidth = Math.max(2, Math.floor(docWidth / gridSpacing));
     const gridHeight = Math.max(2, Math.floor(docHeight / gridSpacing));
 
-    console.log(`Grid points: ${gridWidth}×${gridHeight}`);
-
     const newSymbols: SymbolData[] = [];
 
-    // Create the grid points with proper spacing
     for (let i = 0; i < gridWidth; i++) {
       for (let j = 0; j < gridHeight; j++) {
-        // Calculate position with proper spacing and margins
         const horizontalSpacing = docWidth / gridWidth;
         const verticalSpacing = docHeight / gridHeight;
 
@@ -118,19 +79,16 @@ const GridComponent: React.FC = () => {
       }
     }
 
-    console.log(`Created ${newSymbols.length} symbols`);
     setSymbols(newSymbols);
   };
 
   useEffect(() => {
-    console.log("Component mounted");
     setMounted(true);
 
     const handleResize = (): void => {
       setGrid();
     };
 
-    // Delay the initial setup to ensure container is properly measured
     setTimeout(() => {
       setGrid();
     }, 100);
@@ -147,14 +105,12 @@ const GridComponent: React.FC = () => {
     };
   }, []);
 
-  // Re-run setGrid when relevant props change
   useEffect(() => {
     if (mounted) {
       setGrid();
     }
   }, [gridSpacing, symbolSize, symbolRotation, mounted]);
 
-  // Create animation effect
   useEffect(() => {
     let animationFrameId: number;
 
@@ -169,19 +125,16 @@ const GridComponent: React.FC = () => {
         const rect = element.getBoundingClientRect();
         const gridRect = grid.getBoundingClientRect();
 
-        // Calculate position relative to grid
         const symbolX = rect.left - gridRect.left + rect.width / 2;
         const symbolY = rect.top - gridRect.top + rect.height / 2;
 
         const distance = dist([mouse.x, mouse.y], [symbolX, symbolY]);
         const isClose = distance <= mouseRadius;
 
-        // Calculate scale based on distance
         const scale = isClose
           ? scaleAmount - (distance / mouseRadius) * (scaleAmount - 1)
           : 1;
 
-        // Set the transform with both rotation and scale
         element.style.transform = `scale(${scale}) rotate(${symbolRotation}deg)`;
         element.style.transitionDuration = `${animationSpeed}ms`;
       });
@@ -196,7 +149,7 @@ const GridComponent: React.FC = () => {
         cancelAnimationFrame(animationFrameId);
       }
     };
-  }, [mouse, mouseRadius, symbolRotation, scaleAmount, animationSpeed]);
+  }, [mouse]);
 
   return (
     <div className="relative flex h-[800px] w-1/2 items-center justify-center overflow-hidden">
