@@ -9,7 +9,7 @@ import ProfilesTicker from "../components/ProfilesTicker";
 import FAQ from "../components/FAQ";
 import Counter from "../components/Counter";
 import Copy from "../components/Copy3";
-import GridComponent from "../components/GridBalls";
+// import GridComponent from "../components/GridBalls";
 // import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
