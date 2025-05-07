@@ -4,7 +4,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 // import Ticker from "../components/Ticker";
 // import BentoGrid from "../components/Bento";
-import ProfilesTicker from "../components/ProfilesTicker";
+import ProfilesTicker from "../components/ProfilesTicker2";
 // import ProfilesTickerR from "../components/ProfilesTickerR";
 import FAQ from "../components/FAQ";
 import Counter from "../components/Counter";
@@ -124,7 +124,6 @@ const Home = () => {
         <Counter />
 
         {/* <Ticker /> */}
-        {/* <GridComponent /> */}
 
         {/* Big img 1 */}
         <div className="p-10">
@@ -177,6 +176,11 @@ const Home = () => {
             </Button>
           </div>
         </section>
+
+        {/* <div className="flex h-screen w-full bg-black text-white">
+          <GridComponent />
+          <h1>Coan Construction</h1>
+        </div> */}
 
         <ProfilesTicker />
 
