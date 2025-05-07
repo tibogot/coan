@@ -77,7 +77,10 @@ const GridComponent = () => {
   const symbols = useMemo(() => {
     if (dimensions.width === 0 || dimensions.height === 0) return [];
 
-    const { gridSpacing, symbolSize } = config;
+    const {
+      gridSpacing,
+      //  symbolSize
+    } = config;
     const gridWidth = Math.max(2, Math.floor(dimensions.width / gridSpacing));
     const gridHeight = Math.max(2, Math.floor(dimensions.height / gridSpacing));
 
