@@ -8,7 +8,8 @@ import ProfilesTicker from "../components/ProfilesTicker";
 // import ProfilesTickerR from "../components/ProfilesTickerR";
 import FAQ from "../components/FAQ";
 import Counter from "../components/Counter";
-import Copy from "../components/Copy2";
+import Copy from "../components/Copy3";
+import GridComponent from "../components/GridBalls";
 // import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -123,6 +124,7 @@ const Home = () => {
         <Counter />
 
         {/* <Ticker /> */}
+        {/* <GridComponent /> */}
 
         {/* Big img 1 */}
         <div className="p-10">

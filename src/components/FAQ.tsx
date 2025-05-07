@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { CaretDown } from "@phosphor-icons/react";
 import { gsap } from "gsap";
-import Copy from "./Copy2";
+import Copy from "./Copy3";
 
 type FAQItem = {
   id: number;
@@ -114,12 +114,13 @@ const FAQ = () => {
               className="overflow-hidden rounded-lg border border-gray-200 bg-white"
             >
               <button
-                className="flex w-full items-center justify-between px-6 py-4 text-left"
+                className="flex w-full cursor-pointer items-center justify-between px-6 py-4 text-left select-none"
                 onClick={() => toggleAccordion(item.id)}
                 aria-expanded={activeId === item.id}
                 aria-controls={`content-${item.id}`}
               >
-                <span className="text-lg font-medium text-gray-900">
+                <span className="text-lg font-medium text-gray-900 select-none">
+                  {" "}
                   {item.question}
                 </span>
                 <CaretDown
@@ -146,7 +147,7 @@ const FAQ = () => {
                   }}
                   className="px-6 pb-4"
                 >
-                  <p className="text-gray-600">{item.answer}</p>
+                  <p className="text-gray-600 select-none"> {item.answer}</p>
                 </div>
               </div>
             </div>
