@@ -81,6 +81,7 @@ const GridComponent: React.FC = () => {
   const animateSymbols = () => {
     const grid = gridRef.current;
     if (!grid) return;
+    //@ts-ignore
 
     Array.from(grid.children).forEach((el, index) => {
       const element = el as HTMLElement;
