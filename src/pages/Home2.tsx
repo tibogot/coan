@@ -26,9 +26,13 @@ const Home = () => {
         ease: "power4.inOut",
         duration: "1",
       },
-    ).to(".bgimg2", {
-      scale: 1,
-    });
+    ).to(
+      ".bgimg2",
+      {
+        scale: 1,
+      },
+      "-=0.5",
+    );
     gsap.to(
       ".bigimg1",
 
@@ -60,9 +64,14 @@ const Home = () => {
         </div>
         {/* Hero Section */}
         <section className="relative -mt-18 h-[100svh] w-full overflow-hidden text-white">
-          <div className="bgimg2 relative flex h-full items-center bg-[url('/bgimg2.webp')] bg-cover bg-center bg-no-repeat">
-            {/* Text Container */}
+          {/* Background Image Layer (Animated) */}
+          <div
+            className="bgimg2 absolute inset-0 z-0 scale-50 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: "url('/bgimg2.webp')" }}
+          />
 
+          {/* Content Layer */}
+          <div className="relative z-10 flex h-full items-center">
             <div className="flex flex-col px-10 select-none">
               <div className="logobig w-200 pb-8">
                 <img src="./logo2.svg" alt="" />
@@ -156,7 +165,7 @@ const Home = () => {
 
         {/* Cards */}
 
-        <section className="font-NHD relative h-[100svh] w-full overflow-hidden bg-black"></section>
+        {/* <section className="font-NHD relative h-[100svh] w-full overflow-hidden bg-black"></section> */}
 
         <section className="relative flex w-full overflow-hidden px-10 pt-24 pb-24">
           <div className="flex w-full flex-col gap-4 text-black">
