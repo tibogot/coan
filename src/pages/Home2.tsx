@@ -192,8 +192,16 @@ const Home = () => {
           <div className="relative flex h-full items-center justify-center bg-[url('https://images.unsplash.com/photo-1517089596392-fb9a9033e05b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center bg-no-repeat">
             {/* Dark Overlay */}
             <div className="absolute inset-0 bg-black/10"></div>
+            <div className="w-1/4">
+              <img
+                src="/logo3.svg"
+                alt="Company Logo"
+                className="object-contain"
+              />
+            </div>
+
             {/* Text Container */}
-            <div className="absolute bottom-12 left-0 z-10 w-full px-10 text-white md:w-8/12">
+            <div className="absolute top-12 left-0 z-10 w-full px-10 text-white md:w-8/12">
               <h1 className="text-7xl">
                 Building the Future with Precision & Expertise.
               </h1>

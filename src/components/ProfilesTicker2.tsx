@@ -312,7 +312,7 @@ const ProfilesTicker = () => {
           {PROFILES.map((profile) => (
             <div
               key={`first-${profile.id}`}
-              className="profile-card relative m-4 flex h-[600px] w-[450px] flex-col bg-white transition-shadow hover:shadow-lg"
+              className="profile-card relative m-4 flex h-[600px] w-[450px] flex-col"
             >
               {/* Country Tags */}
               <div className="absolute top-4 left-4 flex space-x-2">
@@ -345,7 +345,7 @@ const ProfilesTicker = () => {
           {PROFILES.map((profile) => (
             <div
               key={`second-${profile.id}`}
-              className="profile-card relative m-4 flex h-[600px] w-[450px] flex-col bg-white transition-shadow hover:shadow-lg"
+              className="profile-card relative m-4 flex h-[600px] w-[450px] flex-col"
             >
               {/* Country Tags */}
               <div className="absolute top-4 left-4 flex space-x-2">
