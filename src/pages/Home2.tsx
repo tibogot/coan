@@ -198,7 +198,7 @@ const Home = () => {
         <FAQ />
 
         <section className="font-NHD relative h-[100svh] w-full overflow-hidden">
-          <div className="relative flex h-full items-center justify-center bg-[url('https://images.unsplash.com/photo-1517089596392-fb9a9033e05b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center bg-no-repeat">
+          <div className="relative flex h-full items-center justify-center bg-[url('https://images.unsplash.com/photo-1710582307396-5ca7b4390aa8?q=80&w=1934&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center bg-no-repeat">
             {/* Dark Overlay */}
             <div className="absolute inset-0 bg-black/10"></div>
             <div className="w-1/4">
@@ -210,9 +210,10 @@ const Home = () => {
             </div>
 
             {/* Text Container */}
-            <div className="absolute top-12 left-0 z-10 w-full px-10 text-white md:w-8/12">
-              <h1 className="text-7xl">
-                Building the Future with Precision & Expertise.
+            <div className="absolute top-20 left-10 z-10 flex w-full justify-start px-10 text-white">
+              <h1 className="text-3xl">
+                Building the Future with Precision
+                <br />& Expertise.
               </h1>
               {/* <p className="mt-4 w-1/2 text-lg">
               COAN West Africa Limited delivers top-tier construction <br />
