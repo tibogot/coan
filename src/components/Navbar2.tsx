@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -9,8 +9,32 @@ gsap.registerPlugin(ScrollTrigger);
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const overlayRef = useRef(null);
   const navRef = useRef(null);
+  const lastScrollY = useRef(0);
+
+  // Set up scroll tracking to detect direction
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // Only trigger hide/show after scrolling a certain amount (10px)
+      if (Math.abs(currentScrollY - lastScrollY.current) < 10) return;
+
+      // Hide when scrolling down, show when scrolling up
+      if (currentScrollY > lastScrollY.current) {
+        setHidden(true);
+      } else {
+        setHidden(false);
+      }
+
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useGSAP(() => {
     gsap.set(overlayRef.current, { xPercent: -100 });
@@ -22,6 +46,16 @@ const Navbar = () => {
       onLeaveBack: () => setScrolled(false),
     });
   }, []);
+
+  useGSAP(() => {
+    if (navRef.current) {
+      gsap.to(navRef.current, {
+        y: hidden ? "-100%" : "0%",
+        duration: 0.3,
+        ease: "power2.out",
+      });
+    }
+  }, [hidden]);
 
   const toggleMenu = () => {
     const overlay = overlayRef.current;
