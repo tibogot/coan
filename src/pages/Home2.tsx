@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import Button from "../components/Buttons";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-// import Ticker from "../components/Ticker";
+import Ticker from "../components/Ticker";
 // import BentoGrid from "../components/Bento";
 import ProfilesTicker from "../components/ProfilesTicker2";
 // import ProfilesTickerR from "../components/ProfilesTickerR";
@@ -18,6 +18,16 @@ gsap.registerPlugin(ScrollTrigger);
 const Home = () => {
   useEffect(() => {
     let tl = gsap.timeline();
+    const tl2 = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".bigimg-wrapper",
+        start: "top top",
+        end: "+=2000", // Total scroll length
+        scrub: true,
+        pin: true,
+        anticipatePin: 1,
+      },
+    });
     tl.to(
       ".splash",
 
@@ -35,13 +45,13 @@ const Home = () => {
       "-=0.5",
     );
     gsap.to(
-      ".bigimg1",
+      ".section1",
 
       {
         scale: 1,
         ease: "none",
         scrollTrigger: {
-          trigger: ".bigimg1",
+          trigger: ".section1",
           start: "top 90%", // Animation starts when the top of the section is 70% from the top of viewport
           end: "bottom 90%", // Animation ends when the bottom of the section is 20% from the top of viewport
           scrub: true, // Smooth scrubbing effect tied to scroll position
@@ -49,6 +59,31 @@ const Home = () => {
         },
       },
     );
+    tl2.to(
+      ".section2",
+      {
+        clipPath: "inset(0% 0% 0% 0%)",
+        ease: "power1.out",
+      },
+      "<",
+    ); // "<" means start at the same time as previous if needed or stagger slightly if you want overlap
+
+    // Reveal section 3
+    tl2.to(".section3", {
+      clipPath: "inset(0% 0% 0% 0%)",
+      ease: "power1.out",
+    });
+    // gsap.to(".sideimg1", {
+    //   clipPath: "inset(0% 0% 0% 0%)",
+    //   ease: "power1.out",
+    //   scrollTrigger: {
+    //     trigger: ".sideimg1",
+    //     start: "top 90%", // Animation starts when the top of the section is 70% from the top of viewport
+    //     end: "bottom 90%", // Animation ends when the bottom of the section is 20% from the top of viewport
+    //     scrub: true, // Smooth scrubbing effect tied to scroll position
+    //     // markers: true, // Uncomment for debugging
+    //   },
+    // });
 
     // Clean up the animation when component unmounts
     return () => {
@@ -64,7 +99,7 @@ const Home = () => {
           <img src="./logo.svg" alt="" className="w-1/3" />
         </div>
         {/* Hero Section */}
-        <section className="relative -mt-18 h-[100svh] w-full overflow-hidden text-white">
+        <section className="hero relative -mt-18 h-[100svh] w-full overflow-hidden text-white">
           {/* Background Image Layer (Animated) */}
           <div
             className="bgimg2 absolute inset-0 z-0 scale-50 bg-cover bg-center bg-no-repeat"
@@ -86,7 +121,7 @@ const Home = () => {
 
         {/* <SecondSection /> */}
 
-        <div className="section px-10 pt-10 pb-30">
+        <div className="px-10 pt-10 pb-30">
           <Copy delay={0.0}>
             <h4>About us</h4>
           </Copy>
@@ -133,31 +168,61 @@ const Home = () => {
         </div>
         <Counter />
 
-        {/* <Ticker /> */}
+        <Ticker />
 
         {/* Big img 1 */}
         <div className="p-10">
-          <section className="bigimg1 relative flex h-screen w-full scale-75 text-orange-500">
-            {/* Background Image */}
-            <div className="absolute inset-0 rounded-xl bg-black/10"></div>
-
-            <div className="absolute inset-0 -z-1">
+          <section className="bigimg-wrapper relative h-screen w-full overflow-hidden">
+            {/* Section 1 (top) */}
+            <div className="section1 absolute inset-0 z-30 origin-center scale-75">
               <img
-                src="https://images.unsplash.com/photo-1582540730843-f4418d96ccbe?q=80&w=2146&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt=""
-                className="h-full w-full rounded-xl object-cover"
+                src="https://picsum.photos/id/1015/1920/1080"
+                alt="Section 1"
+                className="h-full w-full object-cover"
               />
-            </div>
-
-            {/* Content */}
-            <div className="relative z-10 flex w-full items-center justify-center px-10 py-24">
-              <div className="mx-auto flex w-full max-w-3/4 flex-col items-center gap-4 text-center text-5xl text-white">
+              <div className="absolute inset-0 flex items-center justify-center bg-black/30 px-4 text-center text-5xl text-white">
                 <h2>
                   A construction{" "}
-                  <span className="text-orange-500">company,</span>
+                  <span className="text-orange-500">company</span>
                   <br /> offering integrated{" "}
-                  <span className="text-orange-500">solution</span> and related
-                  services.
+                  <span className="text-orange-500">solution</span>
+                </h2>
+              </div>
+            </div>
+
+            {/* Section 2 (middle) */}
+            <div
+              className="section2 absolute inset-0 z-40"
+              style={{ clipPath: "inset(100% 0 0 0)" }}
+            >
+              <img
+                src="https://picsum.photos/id/1025/1920/1080"
+                alt="Section 2"
+                className="h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 flex items-center justify-center bg-black/30 px-4 text-center text-5xl text-white">
+                <h2>
+                  Innovative{" "}
+                  <span className="text-orange-500">engineering</span>
+                  <br /> solutions
+                </h2>
+              </div>
+            </div>
+
+            {/* Section 3 (bottom) */}
+            <div
+              className="section3 absolute inset-0 z-50"
+              style={{ clipPath: "inset(100% 0 0 0)" }}
+            >
+              <img
+                src="https://picsum.photos/id/1039/1920/1080"
+                alt="Section 3"
+                className="h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 flex items-center justify-center bg-black/30 px-4 text-center text-5xl text-white">
+                <h2>
+                  Building the <span className="text-orange-500">future</span>
+                  <br /> together
                 </h2>
               </div>
             </div>
@@ -168,30 +233,25 @@ const Home = () => {
 
         {/* <section className="font-NHD relative h-[100svh] w-full overflow-hidden bg-black"></section> */}
 
-        <div className="flex w-full bg-black text-white">
+        <div className="flex w-full bg-black py-20 text-white">
           <GridComponent />
           <div className="flex w-1/2 flex-col items-start justify-center p-20">
-            <h2>
-              A construction <span className="text-orange-500">company,</span>
-              <br /> offering integrated{" "}
-              <span className="text-orange-500">solution</span> and related
-              services.
-            </h2>{" "}
-            <p className="mt-10 w-1/2 text-base">
-              COAN's professional employees play an integral role in
-              successfully delivering.
-            </p>
+            <Copy>
+              <h2>
+                A construction <span className="text-orange-500">company,</span>
+                <br /> offering integrated{" "}
+                <span className="text-orange-500">solution</span> and related
+                services.
+              </h2>{" "}
+              <p className="mt-10 w-1/2 text-base">
+                COAN's professional employees play an integral role in
+                successfully delivering.
+              </p>
+            </Copy>
           </div>
         </div>
         <section className="font-NHD relative flex h-[100svh] w-full overflow-hidden bg-black px-10 py-30 text-white">
           <div className="left w-1/2">
-            <img
-              src="./bgimg2.webp"
-              alt=""
-              className="h-[650px] w-[550px] object-cover"
-            />
-          </div>
-          <div className="right w-1/2">
             <Copy delay={0.0}>
               <h4>About us</h4>
             </Copy>
@@ -216,6 +276,14 @@ const Home = () => {
                 <br />
               </p>
             </Copy>
+          </div>
+          <div className="right flex w-1/2 justify-end select-none">
+            <img
+              src="./bgimg2.webp"
+              alt=""
+              className="sideimg1 h-[650px] w-[550px] object-cover"
+              style={{ clipPath: "inset(0 0 100% 0)" }}
+            />
           </div>
         </section>
 
@@ -258,10 +326,12 @@ const Home = () => {
 
             {/* Text Container */}
             <div className="absolute top-20 left-10 z-10 flex w-full justify-start px-10 text-white">
-              <h1 className="text-3xl">
-                Building the Future with Precision
-                <br />& Expertise.
-              </h1>
+              <Copy>
+                <h1 className="text-3xl">
+                  Building the Future with Precision
+                  <br />& Expertise.
+                </h1>
+              </Copy>
               {/* <p className="mt-4 w-1/2 text-lg">
               COAN West Africa Limited delivers top-tier construction <br />
               and engineering solutions.
