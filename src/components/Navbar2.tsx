@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -13,8 +13,13 @@ const Navbar = () => {
   const overlayRef = useRef(null);
   const navRef = useRef(null);
   const lastScrollY = useRef(0);
+  const location = useLocation();
+  const scrollTriggerRef = useRef(null);
 
-  // Set up scroll tracking to detect direction
+  // Determine if we're on the home page
+  const isHomePage = location.pathname === "/";
+
+  // Set up scroll tracking to detect direction for hide/show
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -36,17 +41,50 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useGSAP(() => {
-    gsap.set(overlayRef.current, { xPercent: -100 });
+  // Handle page-specific navbar setup
+  useEffect(() => {
+    // Reset scroll position and navbar state when navigating
+    window.scrollTo(0, 0);
+    setHidden(false);
+    lastScrollY.current = 0;
 
-    ScrollTrigger.create({
-      trigger: ".secondsection",
-      start: "top top",
-      onEnter: () => setScrolled(true),
-      onLeaveBack: () => setScrolled(false),
-    });
-  }, []);
+    // Kill any existing ScrollTriggers
+    if (scrollTriggerRef.current) {
+      //@ts-ignore
 
+      scrollTriggerRef.current.kill();
+      scrollTriggerRef.current = null;
+    }
+
+    // Default to transparent for all pages
+    setScrolled(false);
+
+    // Only set up .secondsection trigger on the home page
+    if (isHomePage) {
+      const secondSection = document.querySelector(".secondsection");
+      if (secondSection) {
+        //@ts-ignore
+        scrollTriggerRef.current = ScrollTrigger.create({
+          trigger: ".secondsection",
+          start: "top top",
+          onEnter: () => setScrolled(true),
+          onLeaveBack: () => setScrolled(false),
+        });
+      }
+    }
+
+    return () => {
+      // Clean up ScrollTrigger when component unmounts or route changes
+      if (scrollTriggerRef.current) {
+        //@ts-ignore
+
+        scrollTriggerRef.current.kill();
+        scrollTriggerRef.current = null;
+      }
+    };
+  }, [location.pathname, isHomePage]);
+
+  // Animation for navbar sliding in/out
   useGSAP(() => {
     if (navRef.current) {
       gsap.to(navRef.current, {
@@ -56,6 +94,13 @@ const Navbar = () => {
       });
     }
   }, [hidden]);
+
+  // Mobile menu animation
+  useGSAP(() => {
+    if (overlayRef.current) {
+      gsap.set(overlayRef.current, { xPercent: -100 });
+    }
+  }, []);
 
   const toggleMenu = () => {
     const overlay = overlayRef.current;

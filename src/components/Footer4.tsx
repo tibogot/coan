@@ -57,7 +57,7 @@ const Footer = () => {
 
             <hr className="border-gray-700" />
 
-            <div className="flex flex-wrap justify-between gap-10 text-sm">
+            {/* <div className="flex flex-wrap justify-between gap-10 text-sm">
               {[
                 {
                   title: "Support",
@@ -109,6 +109,30 @@ const Footer = () => {
                   </ul>
                 </div>
               ))}
+            </div> */}
+            <div className="flex flex-wrap gap-10 text-sm">
+              <div className="flex flex-col space-x-6">
+                <Link to="/" className="hover:text-orange-500">
+                  Home
+                </Link>
+                <Link to="/about" className="hover:text-orange-500">
+                  About
+                </Link>
+                <Link to="/services" className="hover:text-orange-500">
+                  Services
+                </Link>
+                <Link to="/gallery" className="hover:text-orange-500">
+                  Gallery
+                </Link>
+              </div>
+              <div>
+                <h5>ADRESS</h5>
+                <p className="mt-2">
+                  22 Durban Street, Wuse 2, Abuja. Nigeria.
+                </p>
+                <p>+234 803 786 9334</p>
+                <p>+234 703 366 8523</p>
+              </div>
             </div>
           </div>
 
@@ -122,7 +146,22 @@ const Footer = () => {
               />
             </div>
             {/* Empty right side, if needed later */}
-            <div className="w-2/3" />
+            <div className="" />
+            <div className="flex gap-6 text-sm">
+              <p>
+                &copy; {new Date().getFullYear()} COAN West Africa Limited. All
+                Rights Reserved
+              </p>
+              <p className="cursor-pointer hover:text-white">
+                Terms & conditions
+              </p>
+              <p className="cursor-pointer hover:text-white">
+                Privacy & cookies
+              </p>
+              <p className="cursor-pointer hover:text-white">
+                Cookie declaration
+              </p>
+            </div>
           </div>
         </footer>
       </div>
