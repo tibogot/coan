@@ -282,7 +282,7 @@ const Home = () => {
               src="./bgimg2.webp"
               alt=""
               className="sideimg1 h-[650px] w-[550px] object-cover"
-              style={{ clipPath: "inset(0 0 100% 0)" }}
+              // style={{ clipPath: "inset(0 0 100% 0)" }}
             />
           </div>
         </section>
