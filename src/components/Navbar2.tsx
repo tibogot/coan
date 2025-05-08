@@ -16,7 +16,7 @@ const Navbar = () => {
     gsap.set(overlayRef.current, { xPercent: -100 });
 
     ScrollTrigger.create({
-      trigger: ".section2",
+      trigger: ".secondsection",
       start: "top top",
       onEnter: () => setScrolled(true),
       onLeaveBack: () => setScrolled(false),

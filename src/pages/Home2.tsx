@@ -121,7 +121,7 @@ const Home = () => {
 
         {/* <SecondSection /> */}
 
-        <div className="px-10 pt-10 pb-30">
+        <div className="secondsection px-10 pt-10 pb-30">
           <Copy delay={0.0}>
             <h4>About us</h4>
           </Copy>
