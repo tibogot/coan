@@ -164,12 +164,12 @@ export default function Copy({
 
         // Play animation based on scroll or immediately
         if (animateOnScroll) {
-          const trigger = ScrollTrigger.create({
-            trigger: element,
-            start: "top 75%",
-            once: true,
-            onEnter: () => timeline.play(),
-          });
+          // const trigger = ScrollTrigger.create({
+          //   trigger: element,
+          //   start: "top 75%",
+          //   once: true,
+          //   onEnter: () => timeline.play(),
+          // });
         } else {
           timeline.play();
         }
