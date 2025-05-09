@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { CaretDown } from "@phosphor-icons/react";
 import { gsap } from "gsap";
-import Copy from "./Copy4";
+import Copy from "./Copy1";
 
 type FAQItem = {
   id: number;

@@ -8,16 +8,17 @@ import ProfilesTicker from "../components/ProfilesTicker2";
 // import ProfilesTickerR from "../components/ProfilesTickerR";
 import FAQ from "../components/FAQ";
 import Counter from "../components/Counter";
-import Copy from "../components/Copy4";
+import Copy from "../components/Copy1";
 // import GridComponent from "../components/GridBalls";
 import GridComponent from "../components/GridComponent2";
+// import StackingCards from "../components/Cards";
 // import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
   useEffect(() => {
-    let tl = gsap.timeline();
+    // let tl = gsap.timeline();
     const tl2 = gsap.timeline({
       scrollTrigger: {
         trigger: ".bigimg-wrapper",
@@ -28,22 +29,22 @@ const Home = () => {
         anticipatePin: 1,
       },
     });
-    tl.to(
-      ".splash",
+    // tl.to(
+    //   ".splash",
 
-      {
-        delay: 1,
-        y: "-100%",
-        ease: "power4.inOut",
-        duration: "1",
-      },
-    ).to(
-      ".bgimg2",
-      {
-        scale: 1,
-      },
-      "-=0.5",
-    );
+    //   {
+    //     delay: 1,
+    //     y: "-100%",
+    //     ease: "power4.inOut",
+    //     duration: "1",
+    //   },
+    // ).to(
+    //   ".bgimg2",
+    //   {
+    //     scale: 1,
+    //   },
+    //   "-=0.5",
+    // );
     gsap.to(
       ".section1",
 
@@ -95,14 +96,14 @@ const Home = () => {
     <>
       <div className="wrapper font-NHD">
         {/* Splash */}
-        <div className="splash absolute top-0 left-0 z-[99999] flex h-screen w-full items-center justify-center bg-black select-none">
+        {/* <div className="splash absolute top-0 left-0 z-[99999] flex h-screen w-full items-center justify-center bg-black select-none">
           <img src="./logo.svg" alt="" className="w-1/3" />
-        </div>
+        </div> */}
         {/* Hero Section */}
         <section className="hero relative -mt-18 h-[100svh] w-full overflow-hidden text-white">
           {/* Background Image Layer (Animated) */}
           <div
-            className="bgimg2 absolute inset-0 z-0 scale-50 bg-cover bg-center bg-no-repeat"
+            className="bgimg2 absolute inset-0 z-0 scale-100 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: "url('/bgimg2.webp')" }}
           />
 
@@ -171,16 +172,16 @@ const Home = () => {
         <Ticker />
 
         {/* Big img 1 */}
-        <div className="p-10">
+        <div className="p-0">
           <section className="bigimg-wrapper relative h-screen w-full overflow-hidden">
             {/* Section 1 (top) */}
             <div className="section1 absolute inset-0 z-30 origin-center scale-75">
               <img
-                src="https://picsum.photos/id/1015/1920/1080"
+                src="./5V6A0113-scaled.jpg"
                 alt="Section 1"
                 className="h-full w-full object-cover"
               />
-              <div className="absolute inset-0 flex items-center justify-center bg-black/30 px-4 text-center text-5xl text-white">
+              <div className="absolute inset-0 flex items-center justify-center bg-black/0 px-4 text-center text-5xl text-white">
                 <h2>
                   A construction{" "}
                   <span className="text-orange-500">company</span>
@@ -196,11 +197,11 @@ const Home = () => {
               style={{ clipPath: "inset(100% 0 0 0)" }}
             >
               <img
-                src="https://picsum.photos/id/1025/1920/1080"
+                src="./5V6A0592-scaled.jpg"
                 alt="Section 2"
                 className="h-full w-full object-cover"
               />
-              <div className="absolute inset-0 flex items-center justify-center bg-black/30 px-4 text-center text-5xl text-white">
+              <div className="absolute inset-0 flex items-center justify-center bg-black/0 px-4 text-center text-5xl text-white">
                 <h2>
                   Innovative{" "}
                   <span className="text-orange-500">engineering</span>
@@ -215,11 +216,11 @@ const Home = () => {
               style={{ clipPath: "inset(100% 0 0 0)" }}
             >
               <img
-                src="https://picsum.photos/id/1039/1920/1080"
+                src="./20210304_102705-2-scaled.jpg"
                 alt="Section 3"
                 className="h-full w-full object-cover"
               />
-              <div className="absolute inset-0 flex items-center justify-center bg-black/30 px-4 text-center text-5xl text-white">
+              <div className="absolute inset-0 flex items-center justify-center bg-black/10 px-4 text-center text-5xl text-white">
                 <h2>
                   Building the <span className="text-orange-500">future</span>
                   <br /> together
@@ -230,6 +231,8 @@ const Home = () => {
         </div>
 
         {/* Cards */}
+
+        {/* <StackingCards /> */}
 
         {/* <section className="font-NHD relative h-[100svh] w-full overflow-hidden bg-black"></section> */}
 
