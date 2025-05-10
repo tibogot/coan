@@ -1,4 +1,4 @@
-import HomeCard from "../components/CardsScroll3";
+// import HomeCard from "../components/CardsScroll3";
 import SecondSection from "../components/SecondSection";
 
 const About = () => {
@@ -8,7 +8,7 @@ const About = () => {
         <div className="h-screen w-full bg-amber-400">About</div>;
       </section>
       <SecondSection />
-      <HomeCard />
+      {/* <HomeCard /> */}
     </>
   );
 };

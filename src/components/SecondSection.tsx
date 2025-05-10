@@ -3,6 +3,7 @@ import FlyingPaths from "../components/MapAnim2";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef, useEffect } from "react";
+import Copy from "./Copy1";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -85,12 +86,14 @@ const SecondSection = () => {
       {/* Top Section */}
       <section className="relative flex w-full overflow-hidden px-10 py-24">
         <div className="mx-auto flex w-full max-w-3/4 flex-col items-center gap-4 text-center text-5xl text-black">
-          <h2>
-            A construction <span className="text-orange-500">company,</span>{" "}
-            <br /> offering integrated{" "}
-            <span className="text-orange-500">solution </span>
-            and related services.
-          </h2>
+          <Copy>
+            <h2>
+              A construction <span className="text-orange-500">company,</span>{" "}
+              <br /> offering integrated{" "}
+              <span className="text-orange-500">solution </span>
+              and related services.
+            </h2>
+          </Copy>
         </div>
       </section>
 
