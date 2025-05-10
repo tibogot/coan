@@ -112,6 +112,13 @@ const Home = () => {
     // Clean up the animation when component unmounts
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      tl2.kill();
+      gsap.killTweensOf(".section1");
+      cards.forEach((card) => {
+        //@ts-ignore
+        const cardInner = card.querySelector(".card-inner");
+        gsap.killTweensOf(cardInner);
+      });
     };
   }, []);
   return (
