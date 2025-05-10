@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
+import Copy from "./Copy1";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -200,10 +201,12 @@ export default function HomeCard() {
       </section> */}
 
       <section className="intro relative flex h-screen w-full items-center bg-gray-100 p-8">
-        <h1 className="max-w-4xl text-3xl font-bold">
-          Creating standout brands for startups that bring joy and leave lasting
-          impressions.
-        </h1>
+        <Copy>
+          <h1 className="max-w-4xl text-3xl font-bold">
+            Creating standout brands for startups that bring joy and leave
+            lasting impressions.
+          </h1>
+        </Copy>
       </section>
 
       <section className="cards relative">
@@ -214,10 +217,12 @@ export default function HomeCard() {
       </section>
 
       <section className="outro relative flex h-screen w-full items-center bg-red-300 p-8">
-        <h1 className="max-w-4xl text-3xl font-bold">
-          Creating standout brands for startups that bring joy and leave lasting
-          impressions.
-        </h1>
+        <Copy>
+          <h1 className="max-w-4xl text-3xl font-bold">
+            Creating standout brands for startups that bring joy and leave
+            lasting impressions.
+          </h1>
+        </Copy>
       </section>
     </div>
   );
