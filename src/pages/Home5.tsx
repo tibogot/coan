@@ -119,6 +119,7 @@ const Home = () => {
         const cardInner = card.querySelector(".card-inner");
         gsap.killTweensOf(cardInner);
       });
+      gsap.globalTimeline.clear();
     };
   }, []);
   return (
