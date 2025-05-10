@@ -1,7 +1,3 @@
-{
-  /*added all the gsap in one */
-}
-
 // import { useEffect } from "react";
 import Button from "../components/Buttons";
 import { gsap } from "gsap";
@@ -12,114 +8,114 @@ import FAQ from "../components/FAQ";
 import Counter from "../components/Counter";
 import Copy from "../components/Copy1";
 import GridComponent from "../components/GridComponent2";
-import HomeCard from "../components/CardsScroll3";
+import HomeCard from "../components/CardsScroll4";
 import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const Home = () => {
-  useGSAP(() => {
-    ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    ScrollTrigger.clearMatchMedia();
+  //   useGSAP(() => {
+  //     ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+  //     ScrollTrigger.clearMatchMedia();
 
-    const cards = gsap.utils.toArray(".card");
+  //     const cards = gsap.utils.toArray(".card");
 
-    // let tl = gsap.timeline();
-    const tl2 = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".bigimg-wrapper",
-        start: "top top",
-        end: "+=2000", // Total scroll length
-        scrub: true,
-        pin: true,
-        anticipatePin: 1,
-      },
-    });
+  //     // let tl = gsap.timeline();
+  //     const tl2 = gsap.timeline({
+  //       scrollTrigger: {
+  //         trigger: ".bigimg-wrapper",
+  //         start: "top top",
+  //         end: "+=2000", // Total scroll length
+  //         scrub: true,
+  //         pin: true,
+  //         anticipatePin: 1,
+  //       },
+  //     });
 
-    gsap.to(".section1", {
-      scale: 1,
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".section1",
-        start: "top 90%", // Animation starts when the top of the section is 70% from the top of viewport
-        end: "bottom 90%", // Animation ends when the bottom of the section is 20% from the top of viewport
-        scrub: true, // Smooth scrubbing effect tied to scroll position
-        // markers: true, // Uncomment for debugging
-      },
-    });
+  //     gsap.to(".section1", {
+  //       scale: 1,
+  //       ease: "none",
+  //       scrollTrigger: {
+  //         trigger: ".section1",
+  //         start: "top 90%", // Animation starts when the top of the section is 70% from the top of viewport
+  //         end: "bottom 90%", // Animation ends when the bottom of the section is 20% from the top of viewport
+  //         scrub: true, // Smooth scrubbing effect tied to scroll position
+  //         // markers: true, // Uncomment for debugging
+  //       },
+  //     });
 
-    tl2.to(
-      ".section2",
-      {
-        clipPath: "inset(0% 0% 0% 0%)",
-        ease: "power1.out",
-      },
-      "<",
-    ); // "<" means start at the same time as previous if needed or stagger slightly if you want overlap
+  //     tl2.to(
+  //       ".section2",
+  //       {
+  //         clipPath: "inset(0% 0% 0% 0%)",
+  //         ease: "power1.out",
+  //       },
+  //       "<",
+  //     ); // "<" means start at the same time as previous if needed or stagger slightly if you want overlap
 
-    // Reveal section 3
-    tl2.to(".section3", {
-      clipPath: "inset(0% 0% 0% 0%)",
-      ease: "power1.out",
-    });
-    ScrollTrigger.create({
-      //@ts-ignore
-      trigger: cards[0],
-      start: "top 35%",
-      //@ts-ignore
-      endTrigger: cards[cards.length - 1],
-      end: "top 30%",
-      pin: ".intro",
-      pinSpacing: false,
-      // markers: true,
-    });
+  //     // Reveal section 3
+  //     tl2.to(".section3", {
+  //       clipPath: "inset(0% 0% 0% 0%)",
+  //       ease: "power1.out",
+  //     });
+  //     ScrollTrigger.create({
+  //       //@ts-ignore
+  //       trigger: cards[0],
+  //       start: "top 35%",
+  //       //@ts-ignore
+  //       endTrigger: cards[cards.length - 1],
+  //       end: "top 30%",
+  //       pin: ".intro",
+  //       pinSpacing: false,
+  //       // markers: true,
+  //     });
 
-    cards.forEach((card, index) => {
-      const isLastCard = index === cards.length - 1;
-      //@ts-ignore
-      const cardInner = card.querySelector(".card-inner");
+  //     cards.forEach((card, index) => {
+  //       const isLastCard = index === cards.length - 1;
+  //       //@ts-ignore
+  //       const cardInner = card.querySelector(".card-inner");
 
-      if (!isLastCard) {
-        ScrollTrigger.create({
-          //@ts-ignore
-          trigger: card,
-          start: "top 35%",
-          endTrigger: ".outro",
-          end: "top 65%",
-          pin: true,
-          pinSpacing: false,
-        });
+  //       if (!isLastCard) {
+  //         ScrollTrigger.create({
+  //           //@ts-ignore
+  //           trigger: card,
+  //           start: "top 35%",
+  //           endTrigger: ".outro",
+  //           end: "top 65%",
+  //           pin: true,
+  //           pinSpacing: false,
+  //         });
 
-        gsap.to(cardInner, {
-          y: `-${(cards.length - index) * 14}vh`,
-          ease: "none",
-          scrollTrigger: {
-            //@ts-ignore
-            trigger: card,
-            start: "top 35%",
-            endTrigger: ".outro",
-            end: "top 65%",
-            scrub: true,
-            // markers: true,
-          },
-        });
-      }
-    });
+  //         gsap.to(cardInner, {
+  //           y: `-${(cards.length - index) * 14}vh`,
+  //           ease: "none",
+  //           scrollTrigger: {
+  //             //@ts-ignore
+  //             trigger: card,
+  //             start: "top 35%",
+  //             endTrigger: ".outro",
+  //             end: "top 65%",
+  //             scrub: true,
+  //             // markers: true,
+  //           },
+  //         });
+  //       }
+  //     });
 
-    // Clean up the animation when component unmounts
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-      ScrollTrigger.clearMatchMedia();
-      tl2.kill();
-      gsap.killTweensOf(".section1");
-      cards.forEach((card) => {
-        //@ts-ignore
-        const cardInner = card.querySelector(".card-inner");
-        gsap.killTweensOf(cardInner);
-      });
-      gsap.globalTimeline.clear();
-    };
-  }, []);
+  //     // Clean up the animation when component unmounts
+  //     return () => {
+  //       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+  //       ScrollTrigger.clearMatchMedia();
+  //       tl2.kill();
+  //       gsap.killTweensOf(".section1");
+  //       cards.forEach((card) => {
+  //         //@ts-ignore
+  //         const cardInner = card.querySelector(".card-inner");
+  //         gsap.killTweensOf(cardInner);
+  //       });
+  //       gsap.globalTimeline.clear();
+  //     };
+  //   }, []);
   return (
     <>
       <div className="wrapper font-NHD">

@@ -3,7 +3,7 @@ import { LenisProvider } from "./components/LenisContext";
 import { ScrollToTop } from "./components/ScrollToTop";
 import Navbar from "./components/Navbar3";
 import Footer from "./components/Footer4";
-import Home from "./pages/Home5";
+import Home from "./pages/Home6";
 import About from "./pages/About2";
 import Contact from "./pages/Contact3";
 
