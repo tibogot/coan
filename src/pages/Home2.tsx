@@ -11,7 +11,7 @@ import Counter from "../components/Counter";
 import Copy from "../components/Copy1";
 // import GridComponent from "../components/GridBalls";
 import GridComponent from "../components/GridComponent2";
-import HomeCard from "../components/CardsScroll";
+// import HomeCard from "../components/CardsScroll";
 // import StackingCards from "../components/Cards";
 // import { useGSAP } from "@gsap/react";
 

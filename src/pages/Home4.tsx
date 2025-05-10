@@ -2,7 +2,7 @@
   /*added all the gsap in one */
 }
 
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import Button from "../components/Buttons";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
