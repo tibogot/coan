@@ -3,9 +3,9 @@ import { LenisProvider } from "./components/LenisContext";
 import { ScrollToTop } from "./components/ScrollToTop";
 import Navbar from "./components/Navbar3";
 import Footer from "./components/Footer4";
-import Home from "./pages/Home2";
+import Home from "./pages/Home5";
 import About from "./pages/About";
-import Contact from "./pages/Contact";
+import Contact from "./pages/Contact3";
 
 function App() {
   return (

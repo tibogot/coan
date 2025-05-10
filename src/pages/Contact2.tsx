@@ -12,6 +12,8 @@ const Card = ({ title, copy, index }) => {
     "bg-purple-200", // #c3abff equivalent
     "bg-white", // #ffff equivalent
     "bg-yellow-300", // #fed35b equivalent
+    "bg-blue-200", // Light blue
+    "bg-green-200", // Light green
     "bg-gray-900 text-white", // #1e1e1e with white text
   ];
 
@@ -49,6 +51,18 @@ export default function HomeCard() {
     {
       title: "Digital Presence",
       copy: "The heart of your company shapes your vision, values and voice",
+    },
+    {
+      title: "Marketing Strategy",
+      copy: "Crafting compelling narratives that connect with your audience",
+    },
+    {
+      title: "Customer Experience",
+      copy: "Creating memorable interactions that build long-term loyalty",
+    },
+    {
+      title: "Growth & Innovation",
+      copy: "Scaling your brand while maintaining authenticity and purpose",
     },
   ];
   //@ts-ignore
@@ -97,7 +111,7 @@ export default function HomeCard() {
 
           // Animate card inner element
           gsap.to(cardInner, {
-            y: `-${(cards.length - index) * 14}vh`, // Important: Use the same formula as original
+            y: `-${(cards.length - index) * 10}vh`, // Slightly adjusted multiplier for more cards
             ease: "none",
             scrollTrigger: {
               //@ts-ignore

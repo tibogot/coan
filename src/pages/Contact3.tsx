@@ -5,28 +5,19 @@ import { ScrollTrigger } from "gsap/all";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-//@ts-ignore
-const Card = ({ title, copy, index }) => {
-  // Apply different background colors based on card index
-  const cardBgColors = [
-    "bg-purple-200", // #c3abff equivalent
-    "bg-white", // #ffff equivalent
-    "bg-yellow-300", // #fed35b equivalent
-    "bg-gray-900 text-white", // #1e1e1e with white text
-  ];
-
+function Card1() {
   return (
-    <div className="card relative w-full" id={`card-${index + 1}`}>
-      <div className={`card-inner relative w-full p-8 ${cardBgColors[index]}`}>
+    <div className="card relative w-full" id="card-1">
+      <div className="card-inner relative w-full bg-purple-200 p-8">
         <div className="flex flex-col gap-8 md:flex-row md:gap-16">
           <div className="card-content flex-grow md:w-2/3">
-            <h1 className="mb-4 text-2xl font-bold">{title}</h1>
-            <p>{copy}</p>
+            <h1 className="mb-4 text-2xl font-bold">Inspiration Engine</h1>
+            <p>Ignite creativity with clarity, passion, and purpose.</p>
           </div>
           <div className="card-img aspect-video overflow-hidden rounded-xl md:w-1/3">
             <img
               src="./truck.png"
-              alt={title}
+              alt="Inspiration Engine"
               className="h-full w-full object-cover"
             />
           </div>
@@ -34,79 +25,122 @@ const Card = ({ title, copy, index }) => {
       </div>
     </div>
   );
-};
+}
+
+function Card2() {
+  return (
+    <div className="card relative w-full" id="card-2">
+      <div className="card-inner relative w-full bg-white p-8">
+        <div className="flex flex-col gap-8 md:flex-row md:gap-16">
+          <div className="card-content flex-grow md:w-2/3">
+            <h1 className="mb-4 text-2xl font-bold">Design Pulse</h1>
+            <p>Crafting digital elegance through visual storytelling.</p>
+          </div>
+          <div className="card-img aspect-video overflow-hidden rounded-xl md:w-1/3">
+            <img
+              src="./truck.png"
+              alt="Design Pulse"
+              className="h-full w-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Card3() {
+  return (
+    <div className="card relative w-full" id="card-3">
+      <div className="card-inner relative w-full bg-yellow-300 p-8">
+        <div className="flex flex-col gap-8 md:flex-row md:gap-16">
+          <div className="card-content flex-grow md:w-2/3">
+            <h1 className="mb-4 text-2xl font-bold">Presence Online</h1>
+            <p>Your story deserves a spotlight on every screen.</p>
+          </div>
+          <div className="card-img aspect-video overflow-hidden rounded-xl md:w-1/3">
+            <img
+              src="./truck.png"
+              alt="Presence Online"
+              className="h-full w-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Card4() {
+  return (
+    <div className="card relative w-full" id="card-4">
+      <div className="card-inner relative w-full bg-gray-900 p-8 text-white">
+        <div className="flex flex-col gap-8 md:flex-row md:gap-16">
+          <div className="card-content flex-grow md:w-2/3">
+            <h1 className="mb-4 text-2xl font-bold">Lasting Impressions</h1>
+            <p>End strong, stay remembered, lead with impact.</p>
+          </div>
+          <div className="card-img aspect-video overflow-hidden rounded-xl md:w-1/3">
+            <img
+              src="./truck.png"
+              alt="Lasting Impressions"
+              className="h-full w-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function HomeCard() {
-  const cards = [
-    {
-      title: "Brand Foundation",
-      copy: "The heart of your company shapes your vision, values and voice",
-    },
-    {
-      title: "Design Identity",
-      copy: "The heart of your company shapes your vision, values and voice",
-    },
-    {
-      title: "Digital Presence",
-      copy: "The heart of your company shapes your vision, values and voice",
-    },
-  ];
   //@ts-ignore
   const container = useRef();
 
   useGSAP(
     () => {
-      // Clear any existing ScrollTriggers to prevent duplication
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
 
       const cards = gsap.utils.toArray(".card");
 
-      // Pin the intro section between first card and last card
       ScrollTrigger.create({
         //@ts-ignore
-
         trigger: cards[0],
         start: "top 35%",
         //@ts-ignore
-
         endTrigger: cards[cards.length - 1],
         end: "top 30%",
         pin: ".intro",
         pinSpacing: false,
+        markers: true,
       });
 
-      // Set up each card
       cards.forEach((card, index) => {
         const isLastCard = index === cards.length - 1;
         //@ts-ignore
-
         const cardInner = card.querySelector(".card-inner");
 
         if (!isLastCard) {
-          // Create pin for each card except the last one
           ScrollTrigger.create({
             //@ts-ignore
-
             trigger: card,
             start: "top 35%",
-            endTrigger: ".outro", // Pin until outro section
+            endTrigger: ".outro",
             end: "top 65%",
             pin: true,
             pinSpacing: false,
           });
 
-          // Animate card inner element
           gsap.to(cardInner, {
-            y: `-${(cards.length - index) * 14}vh`, // Important: Use the same formula as original
+            y: `-${(cards.length - index) * 14}vh`,
             ease: "none",
             scrollTrigger: {
               //@ts-ignore
-
               trigger: card,
               start: "top 35%",
               endTrigger: ".outro",
               end: "top 65%",
-              scrub: true, // Smooth scrubbing
+              scrub: true,
             },
           });
         }
@@ -121,7 +155,6 @@ export default function HomeCard() {
 
   return (
     //@ts-ignore
-
     <div className="overflow-x-hidden" ref={container}>
       <section className="hero relative h-screen w-full p-0">
         <img src="./truck.png" alt="" className="h-full w-full object-cover" />
@@ -135,9 +168,10 @@ export default function HomeCard() {
       </section>
 
       <section className="cards relative">
-        {cards.map((card, index) => (
-          <Card key={index} {...card} index={index} />
-        ))}
+        <Card1 />
+        <Card2 />
+        <Card3 />
+        <Card4 />
       </section>
 
       <section className="outro relative flex h-screen w-full items-center bg-red-300 p-8">

@@ -38,3 +38,61 @@ h2 {
   transform: translateY(100%);
   will-change: transform;
 }
+
+/* .hero,
+.intro,
+.outro {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  padding: 2em;
+}
+
+.hero {
+  padding: 0;
+}
+
+.intro,
+.outro {
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+}
+
+.card {
+  position: relative;
+}
+.card-inner {
+  position: relative;
+  will-change: transform;
+  width: 100%;
+  height: 100%;
+  padding: 2em;
+  display: flex;
+  gap: 4em;
+}
+
+.card-content {
+  flex: 3;
+}
+
+.card-img {
+  flex: 1;
+  aspect-ratio: 16 / 9;
+  border-radius: 0.75em;
+  overflow: hidden;
+}
+
+#card-1 .card-inner {
+  background-color: #c3abff;
+}
+#card-2 .card-inner {
+  background-color: #ffff;
+}
+#card-3 .card-inner {
+  background-color: #fed35b;
+}
+#card-4 .card-inner {
+  background-color: #1e1e1e;
+  color: #fff;
+} */

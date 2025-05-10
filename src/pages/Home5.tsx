@@ -1,4 +1,8 @@
-import { useEffect } from "react";
+{
+  /*added all the gsap in one */
+}
+
+// import { useEffect } from "react";
 import Button from "../components/Buttons";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -11,14 +15,18 @@ import Counter from "../components/Counter";
 import Copy from "../components/Copy1";
 // import GridComponent from "../components/GridBalls";
 import GridComponent from "../components/GridComponent2";
-import HomeCard from "../components/CardsScroll";
+import HomeCard from "../components/CardsScroll2";
 // import StackingCards from "../components/Cards";
-// import { useGSAP } from "@gsap/react";
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
-  useEffect(() => {
+  useGSAP(() => {
+    ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+
+    const cards = gsap.utils.toArray(".card");
+
     // let tl = gsap.timeline();
     const tl2 = gsap.timeline({
       scrollTrigger: {
@@ -30,37 +38,19 @@ const Home = () => {
         anticipatePin: 1,
       },
     });
-    // tl.to(
-    //   ".splash",
 
-    //   {
-    //     delay: 1,
-    //     y: "-100%",
-    //     ease: "power4.inOut",
-    //     duration: "1",
-    //   },
-    // ).to(
-    //   ".bgimg2",
-    //   {
-    //     scale: 1,
-    //   },
-    //   "-=0.5",
-    // );
-    gsap.to(
-      ".section1",
-
-      {
-        scale: 1,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".section1",
-          start: "top 90%", // Animation starts when the top of the section is 70% from the top of viewport
-          end: "bottom 90%", // Animation ends when the bottom of the section is 20% from the top of viewport
-          scrub: true, // Smooth scrubbing effect tied to scroll position
-          // markers: true, // Uncomment for debugging
-        },
+    gsap.to(".section1", {
+      scale: 1,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".section1",
+        start: "top 90%", // Animation starts when the top of the section is 70% from the top of viewport
+        end: "bottom 90%", // Animation ends when the bottom of the section is 20% from the top of viewport
+        scrub: true, // Smooth scrubbing effect tied to scroll position
+        // markers: true, // Uncomment for debugging
       },
-    );
+    });
+
     tl2.to(
       ".section2",
       {
@@ -75,24 +65,55 @@ const Home = () => {
       clipPath: "inset(0% 0% 0% 0%)",
       ease: "power1.out",
     });
-    // gsap.to(".sideimg1", {
-    //   clipPath: "inset(0% 0% 0% 0%)",
-    //   ease: "power1.out",
-    //   scrollTrigger: {
-    //     trigger: ".sideimg1",
-    //     start: "top 90%", // Animation starts when the top of the section is 70% from the top of viewport
-    //     end: "bottom 90%", // Animation ends when the bottom of the section is 20% from the top of viewport
-    //     scrub: true, // Smooth scrubbing effect tied to scroll position
-    //     // markers: true, // Uncomment for debugging
-    //   },
-    // });
+    ScrollTrigger.create({
+      //@ts-ignore
+      trigger: cards[0],
+      start: "top 35%",
+      //@ts-ignore
+      endTrigger: cards[cards.length - 1],
+      end: "top 30%",
+      pin: ".intro",
+      pinSpacing: false,
+      // markers: true,
+    });
+
+    cards.forEach((card, index) => {
+      const isLastCard = index === cards.length - 1;
+      //@ts-ignore
+      const cardInner = card.querySelector(".card-inner");
+
+      if (!isLastCard) {
+        ScrollTrigger.create({
+          //@ts-ignore
+          trigger: card,
+          start: "top 35%",
+          endTrigger: ".outro",
+          end: "top 65%",
+          pin: true,
+          pinSpacing: false,
+        });
+
+        gsap.to(cardInner, {
+          y: `-${(cards.length - index) * 14}vh`,
+          ease: "none",
+          scrollTrigger: {
+            //@ts-ignore
+            trigger: card,
+            start: "top 35%",
+            endTrigger: ".outro",
+            end: "top 65%",
+            scrub: true,
+            // markers: true,
+          },
+        });
+      }
+    });
 
     // Clean up the animation when component unmounts
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
-
   return (
     <>
       <div className="wrapper font-NHD">
@@ -124,9 +145,9 @@ const Home = () => {
         {/* <SecondSection /> */}
 
         <div className="secondsection px-10 pt-10 pb-30">
-          <Copy delay={0.0}>
-            <h4>About us</h4>
-          </Copy>
+          {/* <Copy delay={0.0}> */}
+          <h4>About us</h4>
+          {/* </Copy> */}
 
           <Copy>
             <h2 className="mt-4 w-3/4">
@@ -146,9 +167,8 @@ const Home = () => {
                 </h3>
               </Copy>
             </div>
-
-            <div className="w-1/2">
-              <Copy>
+            <Copy>
+              <div className="w-1/2">
                 <p className="w-7/8 text-xl">
                   MIMCO est un groupe d'investissement spécialisé dans
                   l'immobilier value add paneuropéen.
@@ -164,12 +184,12 @@ const Home = () => {
                   exclusifs, en passant par des produits sur mesure incluant
                   notamment des solutions equity et dette mezzanine.
                 </p>
-              </Copy>
-            </div>
+              </div>
+            </Copy>
           </div>
         </div>
+
         <Counter />
-        {/* <HomeCard /> */}
 
         <Ticker />
 
@@ -231,6 +251,7 @@ const Home = () => {
             </div>
           </section>
         </div>
+        <HomeCard />
 
         {/* Cards */}
 
