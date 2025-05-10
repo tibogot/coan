@@ -8,7 +8,7 @@ import FAQ from "../components/FAQ";
 import Counter from "../components/Counter";
 import Copy from "../components/Copy1";
 import GridComponent from "../components/GridComponent2";
-import HomeCard from "../components/CardsScroll4";
+import HomeCard from "../components/CardsScroll5";
 import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);

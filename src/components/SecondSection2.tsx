@@ -2,11 +2,11 @@ import Button from "../components/Buttons";
 import FlyingPaths from "../components/MapAnim2";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useRef } from "react";
+import { useRef, useLayoutEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import Copy from "./Copy1";
 
-gsap.registerPlugin(useGSAP, ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const SecondSection = () => {
   const sectionRef = useRef(null);
@@ -15,8 +15,29 @@ const SecondSection = () => {
   const svgLineRef1 = useRef(null);
   const containerRef = useRef(null);
 
+  // Force a refresh of ScrollTrigger on component mount
+  useLayoutEffect(() => {
+    // Small delay to ensure DOM is fully ready
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh(true);
+    }, 100);
+
+    return () => {
+      clearTimeout(timer);
+      // Explicitly kill all ScrollTrigger instances when component unmounts
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
+
   useGSAP(
     () => {
+      // Clear any previous ScrollTrigger instances first
+      ScrollTrigger.getAll().forEach((trigger) => {
+        if (trigger.vars.id?.includes("second-section-")) {
+          trigger.kill();
+        }
+      });
+
       // Create counter animations
       const counters = [
         { selector: ".counter1", value: 600 },
@@ -24,13 +45,16 @@ const SecondSection = () => {
         { selector: ".counter3", value: 460 },
       ];
 
-      counters.forEach(({ selector, value }) => {
+      counters.forEach(({ selector, value }, index) => {
         gsap.to(selector, {
           scrollTrigger: {
+            id: `second-section-counter-${index}`,
             trigger: selector,
             start: "top 80%",
             end: "bottom 80%",
             scrub: 1,
+            // Always set invalidateOnRefresh for better consistency across page loads
+            invalidateOnRefresh: true,
           },
           innerText: value,
           duration: 2,
@@ -50,10 +74,12 @@ const SecondSection = () => {
             scaleY: 1,
             ease: "none",
             scrollTrigger: {
+              id: "second-section-line-1",
               trigger: sectionRef.current,
               start: "top 70%",
               end: "bottom 50%",
               scrub: true,
+              invalidateOnRefresh: true,
               // markers: true, // Uncomment for debugging
             },
           },
@@ -72,17 +98,36 @@ const SecondSection = () => {
             scaleY: 1,
             ease: "none",
             scrollTrigger: {
+              id: "second-section-line-2",
               trigger: sectionRef1.current,
               start: "top 70%",
               end: "bottom 50%",
               scrub: true,
+              invalidateOnRefresh: true,
               // markers: true, // Uncomment for debugging
             },
           },
         );
       }
+
+      // Forcing a refresh after all ScrollTriggers are created
+      ScrollTrigger.refresh();
+
+      return () => {
+        // Clean up only this component's ScrollTrigger instances
+        ScrollTrigger.getAll().forEach((trigger) => {
+          if (trigger.vars.id?.includes("second-section-")) {
+            trigger.kill();
+          }
+        });
+      };
     },
-    { scope: containerRef, dependencies: [] },
+    {
+      scope: containerRef,
+      dependencies: [],
+      // Adding revertOnUpdate option to ensure proper cleanup during re-renders
+      revertOnUpdate: true,
+    },
   );
 
   return (
