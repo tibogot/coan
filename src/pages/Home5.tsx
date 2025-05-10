@@ -15,7 +15,7 @@ import Counter from "../components/Counter";
 import Copy from "../components/Copy1";
 // import GridComponent from "../components/GridBalls";
 import GridComponent from "../components/GridComponent2";
-import HomeCard from "../components/CardsScroll2";
+import HomeCard from "../components/CardsScroll3";
 // import StackingCards from "../components/Cards";
 import { useGSAP } from "@gsap/react";
 
@@ -251,6 +251,7 @@ const Home = () => {
             </div>
           </section>
         </div>
+
         <HomeCard />
 
         {/* Cards */}
