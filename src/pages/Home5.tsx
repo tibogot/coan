@@ -120,6 +120,7 @@ const Home = () => {
         gsap.killTweensOf(cardInner);
       });
       gsap.globalTimeline.clear();
+      ScrollTrigger.refresh();
     };
   }, []);
   return (
