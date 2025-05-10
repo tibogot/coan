@@ -108,6 +108,7 @@ const Home = () => {
         });
       }
     });
+    
 
     // Clean up the animation when component unmounts
     return () => {
