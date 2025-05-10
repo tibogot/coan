@@ -2,11 +2,11 @@ import Button from "../components/Buttons";
 import FlyingPaths from "../components/MapAnim2";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useRef, useLayoutEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import Copy from "./Copy1";
 
-gsap.registerPlugin(ScrollTrigger, useGSAP);
+gsap.registerPlugin(ScrollTrigger);
 
 const SecondSection = () => {
   const sectionRef = useRef(null);
@@ -14,56 +14,64 @@ const SecondSection = () => {
   const svgLineRef = useRef(null);
   const svgLineRef1 = useRef(null);
   const containerRef = useRef(null);
+  const [domReady, setDomReady] = useState(false);
 
-  // Force a refresh of ScrollTrigger on component mount
-  useLayoutEffect(() => {
-    // Small delay to ensure DOM is fully ready
+  // Wait for DOM to be fully ready
+  useEffect(() => {
+    // Short timeout to ensure DOM is fully rendered
     const timer = setTimeout(() => {
-      ScrollTrigger.refresh(true);
+      setDomReady(true);
     }, 100);
 
-    return () => {
-      clearTimeout(timer);
-      // Explicitly kill all ScrollTrigger instances when component unmounts
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
+    return () => clearTimeout(timer);
   }, []);
 
   useGSAP(
     () => {
-      // Clear any previous ScrollTrigger instances first
-      ScrollTrigger.getAll().forEach((trigger) => {
-        if (trigger.vars.id?.includes("second-section-")) {
-          trigger.kill();
-        }
-      });
+      // Make sure the DOM elements are available
+      if (
+        !svgLineRef.current ||
+        !sectionRef.current ||
+        !svgLineRef1.current ||
+        !sectionRef1.current
+      )
+        return;
 
-      // Create counter animations
+      // Create separate instances for counter animations
+      //@ts-ignore
+
+      const countersContexts = [];
+
       const counters = [
         { selector: ".counter1", value: 600 },
         { selector: ".counter2", value: 28 },
         { selector: ".counter3", value: 460 },
       ];
 
-      counters.forEach(({ selector, value }, index) => {
-        gsap.to(selector, {
-          scrollTrigger: {
-            id: `second-section-counter-${index}`,
-            trigger: selector,
-            start: "top 80%",
-            end: "bottom 80%",
-            scrub: 1,
-            // Always set invalidateOnRefresh for better consistency across page loads
-            invalidateOnRefresh: true,
-          },
-          innerText: value,
-          duration: 2,
-          snap: { innerText: 1 },
+      counters.forEach(({ selector, value }) => {
+        const element = document.querySelector(selector);
+        if (!element) return;
+
+        const ctx = gsap.context(() => {
+          gsap.to(selector, {
+            scrollTrigger: {
+              trigger: selector,
+              start: "top 80%",
+              end: "bottom 80%",
+              scrub: 1,
+              once: false,
+            },
+            innerText: value,
+            duration: 2,
+            snap: { innerText: 1 },
+          });
         });
+
+        countersContexts.push(ctx);
       });
 
-      // Create the animation for the first SVG line
-      if (svgLineRef.current && sectionRef.current) {
+      // Create the animation contexts for SVG lines
+      const lineCtx1 = gsap.context(() => {
         gsap.fromTo(
           svgLineRef.current,
           {
@@ -74,20 +82,17 @@ const SecondSection = () => {
             scaleY: 1,
             ease: "none",
             scrollTrigger: {
-              id: "second-section-line-1",
               trigger: sectionRef.current,
               start: "top 70%",
               end: "bottom 50%",
               scrub: true,
-              invalidateOnRefresh: true,
-              // markers: true, // Uncomment for debugging
+              once: false,
             },
           },
         );
-      }
+      });
 
-      // Create the animation for the second SVG line
-      if (svgLineRef1.current && sectionRef1.current) {
+      const lineCtx2 = gsap.context(() => {
         gsap.fromTo(
           svgLineRef1.current,
           {
@@ -98,35 +103,28 @@ const SecondSection = () => {
             scaleY: 1,
             ease: "none",
             scrollTrigger: {
-              id: "second-section-line-2",
               trigger: sectionRef1.current,
               start: "top 70%",
               end: "bottom 50%",
               scrub: true,
-              invalidateOnRefresh: true,
-              // markers: true, // Uncomment for debugging
+              once: false,
             },
           },
         );
-      }
+      });
 
-      // Forcing a refresh after all ScrollTriggers are created
-      ScrollTrigger.refresh();
-
+      // Return cleanup function
       return () => {
-        // Clean up only this component's ScrollTrigger instances
-        ScrollTrigger.getAll().forEach((trigger) => {
-          if (trigger.vars.id?.includes("second-section-")) {
-            trigger.kill();
-          }
-        });
+        // Clean up all the contexts
+        //@ts-ignore
+        countersContexts.forEach((ctx) => ctx.revert());
+        lineCtx1.revert();
+        lineCtx2.revert();
       };
     },
     {
       scope: containerRef,
-      dependencies: [],
-      // Adding revertOnUpdate option to ensure proper cleanup during re-renders
-      revertOnUpdate: true,
+      dependencies: [domReady], // Only run when the DOM is ready
     },
   );
 

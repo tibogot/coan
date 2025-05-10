@@ -1,4 +1,4 @@
-import { useRef, useLayoutEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
@@ -96,85 +96,99 @@ function Card4() {
 export default function HomeCard() {
   //@ts-ignore
   const container = useRef();
+  const [domReady, setDomReady] = useState(false);
 
   // Force a refresh of ScrollTrigger on component mount
-  useLayoutEffect(() => {
-    // Small delay to ensure DOM is fully ready
+  useEffect(() => {
+    // Short timeout to ensure DOM is fully rendered
     const timer = setTimeout(() => {
-      ScrollTrigger.refresh(true);
+      setDomReady(true);
     }, 100);
 
-    return () => {
-      clearTimeout(timer);
-      // Explicitly kill all ScrollTrigger instances when component unmounts
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
+    return () => clearTimeout(timer);
   }, []);
 
   useGSAP(
     () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      if (!container.current || !domReady) return;
 
       const cards = gsap.utils.toArray(".card");
+      if (cards.length === 0) return;
 
-      ScrollTrigger.create({
-        //@ts-ignore
-        trigger: cards[0],
-        start: "top 35%",
-        //@ts-ignore
-        endTrigger: cards[cards.length - 1],
-        end: "top 30%",
-        pin: ".intro",
-        pinSpacing: false,
-        invalidateOnRefresh: true,
-        // markers: true,
+      // Create a context for the intro pin
+      const introPinCtx = gsap.context(() => {
+        ScrollTrigger.create({
+          //@ts-ignore
+          trigger: cards[0],
+          start: "top 35%",
+          //@ts-ignore
+
+          endTrigger: cards[cards.length - 1],
+          end: "top 30%",
+          pin: ".intro",
+          pinSpacing: false,
+        });
       });
+
+      // Array to store all card animation contexts
+      //@ts-ignore
+
+      const cardContexts = [];
 
       cards.forEach((card, index) => {
         const isLastCard = index === cards.length - 1;
         //@ts-ignore
+
         const cardInner = card.querySelector(".card-inner");
 
-        if (!isLastCard) {
-          ScrollTrigger.create({
-            //@ts-ignore
-            trigger: card,
-            start: "top 35%",
-            endTrigger: ".outro",
-            end: "top 65%",
-            pin: true,
-            pinSpacing: false,
-            invalidateOnRefresh: true,
-          });
-
-          gsap.to(cardInner, {
-            y: `-${(cards.length - index) * 14}vh`,
-            ease: "none",
-            scrollTrigger: {
+        if (!isLastCard && cardInner) {
+          // Create a context for each card's pin
+          const pinCtx = gsap.context(() => {
+            ScrollTrigger.create({
               //@ts-ignore
+
               trigger: card,
               start: "top 35%",
               endTrigger: ".outro",
               end: "top 65%",
-              scrub: true,
-              invalidateOnRefresh: true,
-              // markers: true,
-            },
+              pin: true,
+              pinSpacing: false,
+            });
           });
+
+          // Create a context for each card's animation
+          const animCtx = gsap.context(() => {
+            gsap.to(cardInner, {
+              y: `-${(cards.length - index) * 14}vh`,
+              ease: "none",
+              scrollTrigger: {
+                //@ts-ignore
+
+                trigger: card,
+                start: "top 35%",
+                endTrigger: ".outro",
+                end: "top 65%",
+                scrub: true,
+              },
+            });
+          });
+
+          cardContexts.push(pinCtx, animCtx);
         }
       });
 
-      ScrollTrigger.refresh();
-
+      // Return cleanup function
       return () => {
-        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+        // Clean up all contexts
+        introPinCtx.revert();
+        //@ts-ignore
+
+        cardContexts.forEach((ctx) => ctx.revert());
       };
     },
     {
       scope: container,
-      dependencies: [],
-      // Adding revertOnUpdate option for proper cleanup during re-renders
-      revertOnUpdate: true,
+      dependencies: [domReady], // Only run when DOM is ready
     },
   );
 
