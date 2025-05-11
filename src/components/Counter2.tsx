@@ -24,7 +24,7 @@ const Counter = () => {
           start: "top 80%",
           end: "bottom 80%",
           scrub: 1,
-          markers: true,
+          //   markers: true,
         },
         innerText: value,
         duration: 2,
